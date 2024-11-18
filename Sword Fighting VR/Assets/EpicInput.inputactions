@@ -1,0 +1,34 @@
+{
+    "name": "EpicInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "7a9f0385-6d3c-4369-a807-d0b18f99c59c",
+            "actions": [
+                {
+                    "name": "Printing",
+                    "type": "Button",
+                    "id": "1ed78465-3e08-4ddb-bcef-07efcc943e59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "08e124a6-04e9-49be-88a3-0a508f4018d2",
+                    "path": "<Keyboard>/#(E)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Printing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
