@@ -13,12 +13,14 @@ public class CollisionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            _damage = other.gameObject.GetComponent<Weapon>().GetDamage();
+            _damage = other.gameObject.GetComponent<Weapon>().GetDamage(other);
+            if (_damage == 0) return;
             transform.root.GetComponent<Health>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage);
             StartCoroutine(ChangeColor());
         }
     }
 
+    //Make sure it doesn't stay red lmao
     IEnumerator ChangeColor()
     {
         transform.root.GetComponent<MeshRenderer>().material.color = Color.red;

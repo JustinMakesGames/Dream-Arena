@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
 
     public void CalculateDamage(ColliderType colType, bool hasArmor, float armorDamageReduction, int baseDamage)
     {
+        //When you hit the head we want it to do more damage than if you hit the arms, so we're gonna add a modifier.
         int damage = Mathf.RoundToInt(colType switch
         {
             ColliderType.HEAD => baseDamage * headDamageModifier,
@@ -30,7 +31,6 @@ public class Health : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        print(damage);
         health -= damage;
         if (health <= 0)
         {
