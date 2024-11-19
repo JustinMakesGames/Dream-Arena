@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
@@ -6,24 +8,22 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] private ColliderType type;
     [SerializeField] private bool hasArmor;
     [SerializeField] private float armorDamageReduction;
-    [SerializeField] private int headDamage, bodyDamage, legDamage, armDamage;
     private int _damage;
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        _damage = other.gameObject.GetComponent<Weapon>().GetDamage();
-        transform.parent.root.GetComponent<Health>().HandleCollisions(type, hasArmor, armorDamageReduction, _damage);
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            _damage = other.gameObject.GetComponent<Weapon>().GetDamage();
+            transform.root.GetComponent<Health>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage);
+            StartCoroutine(ChangeColor());
+        }
     }
 
-    private int CalculateDamage(int baseDamage, ColliderType colType)
+    IEnumerator ChangeColor()
     {
-        int damage = colType switch
-        {
-            ColliderType.HEAD => headDamage,
-            ColliderType.BODY => bodyDamage,
-            ColliderType.LEG => legDamage,
-            ColliderType.ARM => armDamage,
-            _ => 0
-        };
-        return damage;
+        transform.root.GetComponent<MeshRenderer>().material.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        transform.root.GetComponent<MeshRenderer>().material.color = Color.white;
+
     }
 }
