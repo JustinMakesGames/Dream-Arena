@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public enum EnemyType {
     MELEE,
     RANGED
 }
-
 [Serializable]
 public struct DamageModifiers
 {
@@ -22,5 +19,5 @@ public class EnemyStats : ScriptableObject
     public int damage;
     public int health;
     public EnemyType type;
-    public DamageModifiers DamageModifiers;
+    public DamageModifiers damageModifiers;
 }

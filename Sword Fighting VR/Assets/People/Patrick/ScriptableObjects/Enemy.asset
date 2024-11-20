@@ -15,8 +15,8 @@ MonoBehaviour:
   damage: 10
   health: 100
   type: 0
-  DamageModifiers:
+  damageModifiers:
     headModifier: 3
-    bodyModifier: 1.5
+    bodyModifier: 1
     armModifier: 1
     legModifier: 1

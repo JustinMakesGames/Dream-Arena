@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(BoxCollider))]
 public class Weapon : MonoBehaviour
 {
+    #region Variables
     [Header("Stats")]
     [Tooltip("If this bool is checked, the weapon ignores any armor damage reduction.")]
     [SerializeField] private bool ignoresArmor;
@@ -19,6 +20,7 @@ public class Weapon : MonoBehaviour
     private ActionBasedController _controller;
     private float _distancePunishment;
     private Vector3 _lastInputRot;
+    #endregion
     
     #region Setup
     private void Start()
@@ -58,13 +60,13 @@ public class Weapon : MonoBehaviour
         {
             0 => 2,
             <= 1 => 1, 
-            <= 3 => 0.5f,
+            <= 6 => 0.5f,
             _ => 0.1f
         };
         _timePunishment = _timeSinceLastDamage switch
         {
-            <= 0.3f => 0f,
-            <= 0.6f => 0.5f,
+            <= 0.2f => 0f,
+            <= 0.5f => 0.5f,
             _ => 1f
         };
         Vector3 rot = _inputActionRotation.action.ReadValue<Quaternion>().eulerAngles.normalized;
@@ -78,6 +80,4 @@ public class Weapon : MonoBehaviour
         return damage;
     }
     #endregion
-    
-
 }

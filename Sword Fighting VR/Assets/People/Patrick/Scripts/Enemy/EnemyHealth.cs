@@ -8,21 +8,24 @@ public enum ColliderType {
 }
 public class EnemyHealth : MonoBehaviour
 {
-    //We don't want scripts to be able to edit the health directly, so we're going to make it private but make sure it's still readable.
+    //We don't want scripts to be able to edit the health directly,
+    //so we're going to make it private but make sure it's still readable.
     private int _health;
+    
     public int GetHealth() => _health;
     private DamageModifiers _damageModifiers;
     [SerializeField] private EnemyStats stats;
 
     private void Start()
     {
-        _damageModifiers = stats.DamageModifiers;
+        _damageModifiers = stats.damageModifiers;
         _health = stats.health;
     }
 
     public void CalculateDamage(ColliderType colType, bool hasArmor, float armorDamageReduction, int baseDamage)
     {
-        //When you hit the head we want it to do more damage than if you hit the arms, so we're gonna add a modifier.
+        //When you hit the head we want it to do more damage than if you hit the arms,
+        //so this is going to add a modifier depending on where you hit.
         int damage = Mathf.RoundToInt(colType switch
         {
             ColliderType.HEAD => baseDamage * _damageModifiers.headModifier,
@@ -36,14 +39,12 @@ public class EnemyHealth : MonoBehaviour
         TakeDamage(damage);
     }
 
-    private void TakeDamage(int damage)
+    private void TakeDamage(int damage) 
     {
         _health -= damage;
         if (_health <= 0)
         {
-            print("Killed " + gameObject.name);
             Destroy(gameObject);
-            
         }
     }
 }
