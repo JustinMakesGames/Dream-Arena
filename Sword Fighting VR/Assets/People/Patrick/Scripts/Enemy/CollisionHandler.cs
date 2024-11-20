@@ -15,7 +15,7 @@ public class CollisionHandler : MonoBehaviour
         {
             _damage = other.gameObject.GetComponent<Weapon>().GetDamage(other);
             if (_damage == 0) return;
-            transform.root.GetComponent<Health>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage);
+            transform.root.GetComponent<EnemyHealth>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage);
             StartCoroutine(ChangeColor());
         }
     }
