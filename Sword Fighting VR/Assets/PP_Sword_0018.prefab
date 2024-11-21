@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4994133614055064567}
   - component: {fileID: 5860107325953918360}
   - component: {fileID: 2669381072556506140}
-  - component: {fileID: 918008340142843570}
+  - component: {fileID: 8489537548630567545}
   - component: {fileID: 5936785394703902353}
   m_Layer: 0
   m_Name: PP_Sword_0018
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.26435095, y: 1, z: 0.105809234}
   m_Center: {x: 0, y: 0.35, z: 0}
---- !u!114 &918008340142843570
+--- !u!114 &8489537548630567545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,9 +116,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5370520874132690742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c941aef245618ef4e9115a15bd2b7cff, type: 3}
+  m_Script: {fileID: 11500000, guid: f47198bd1bbc15842b7292c9d4ed3656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActionPosition:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Input Action Position
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 1943bb05-7e02-4b9e-8cf4-6237f0196ddd
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  inputActionRotation:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Input Action Rotation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 0323e9dd-cfb3-4bdb-ae76-7dbcad94feb3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  controller: {fileID: 0}
   ignoresArmor: 0
   baseDamage: 10
 --- !u!54 &5936785394703902353
