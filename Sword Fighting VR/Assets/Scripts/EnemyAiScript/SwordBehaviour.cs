@@ -21,16 +21,29 @@ public class SwordBehaviour : MonoBehaviour
 
     [Header("Attacking")]
     [SerializeField] private Animator slashingAnimator;
+    [SerializeField] private bool isReadyForAttack;
+
+    [SerializeField] private EnemyAI enemyAIScript;
 
     private void Awake()
     {
         _originalYPosition = transform.position.y;
+        enemyAIScript = transform.parent.parent.parent.GetComponent<EnemyAI>();
+    }
+
+    private void Start()
+    {
+
+    }
+
+    public void StartAttacking()
+    {
+        StartCoroutine(AttackIntervals());
+
     }
     private void Update()
     {
-        
         HoldingSwordAnimation();
-        Attack();
         
     }
 
@@ -55,9 +68,27 @@ public class SwordBehaviour : MonoBehaviour
         angle = Mathf.Cos(Time.time * pointFrequency) * pointAmplitude;
     }
 
-    private void Attack()
+    private void OnTriggerEnter(Collider other)
     {
-        slashingAnimator.SetTrigger("RightSlashTrigger");
+        if (other.transform.CompareTag("Player"))
+        {
+            print("Touched player");
+        }
+    }
+
+    private IEnumerator AttackIntervals()
+    {
+        yield return new WaitForSeconds(0.5f);
+        while (enemyAIScript.isAttacking)
+        {
+            slashingAnimator.SetTrigger("RightSlashTrigger");
+            yield return null;
+            print(slashingAnimator.GetCurrentAnimatorStateInfo(0).length);
+            yield return new WaitForSeconds(0.5f);
+
+        }
+
+
     }
 
 
