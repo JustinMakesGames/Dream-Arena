@@ -5,10 +5,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Sword : Weapon
 {
+    #region Variables
     [SerializeField] private bool ignoresArmor;
     [SerializeField] private int baseDamage;
     private float _timeSinceLastDamage;
     private Vector3 _lastInputRot;
+    #endregion
     
     #region Damage Handler
     public override int GetDamage(Collider collision)
@@ -25,7 +27,7 @@ public class Sword : Weapon
                                                   * distancePunishment * timePunishment);
         _lastInputRot = rot;
         _timeSinceLastDamage = 0;
-        return 100;
+        return damage;
     }
     #endregion
     

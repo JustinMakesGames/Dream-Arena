@@ -17,7 +17,6 @@ TagManager:
   - Right hand
   - Left hand
   - Player Layer
-  - Weapon
   - 
   - 
   - 
@@ -39,6 +38,7 @@ TagManager:
   - 
   - 
   - 
+  - Ignore this layer
   m_SortingLayers:
   - name: Default
     uniqueID: 0
