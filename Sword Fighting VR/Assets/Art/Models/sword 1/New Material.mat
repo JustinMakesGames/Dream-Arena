@@ -23,16 +23,16 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: :m_LightmapFlags
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: a551ddee0e870414dab6f7bc1b7b7a59, type: 3}
+        m_Texture: {fileID: 2800000, guid: 476399956a894964eae71a81a4569901, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 62ab55d9bdd5ede47b1c3400e690afa0, type: 3}
+        m_Texture: {fileID: 2800000, guid: d23e57ea0535f3c4683b2955d3c9b8a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -52,11 +52,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a551ddee0e870414dab6f7bc1b7b7a59, type: 3}
+        m_Texture: {fileID: 2800000, guid: 476399956a894964eae71a81a4569901, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 50b21a10674630c41b08a4d12bf76f76, type: 3}
+        m_Texture: {fileID: 2800000, guid: 18397abea243b6243a720d199b885e77, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
