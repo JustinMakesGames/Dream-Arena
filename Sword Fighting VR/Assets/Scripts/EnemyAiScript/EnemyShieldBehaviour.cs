@@ -75,4 +75,12 @@ public class EnemyShieldBehaviour : MonoBehaviour
         return position;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Weapon"))
+        {
+            
+        }
+    }
+
 }
