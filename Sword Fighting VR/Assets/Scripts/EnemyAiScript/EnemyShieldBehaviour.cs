@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemyShieldBehaviour : MonoBehaviour
@@ -8,11 +9,15 @@ public class EnemyShieldBehaviour : MonoBehaviour
     [SerializeField] private int positionAmount;
     [SerializeField] private float shieldRange;
     [SerializeField] private GameObject positionPrefabEmpty;
+    [SerializeField] private float rotationSpeed;
     private List<Transform> _positionsForShield = new List<Transform>();
+
+    public Transform leftArm;
 
     private void Start()
     {
         MakeAngle();
+
     }
 
     private void MakeAngle()
@@ -24,16 +29,50 @@ public class EnemyShieldBehaviour : MonoBehaviour
 
             Vector3 position = new Vector3(Mathf.Cos(radian) * shieldRange, 0, Mathf.Sin(radian) * shieldRange);
 
-            Vector3 direction = (transform.parent.position - position).normalized;
-            direction.y = 0;
-
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            GameObject newEmpty = Instantiate(positionPrefabEmpty, transform.parent.position + position, Quaternion.identity, transform.parent);
+            GameObject newEmpty = Instantiate(positionPrefabEmpty, transform.parent.position + position, Quaternion.identity, transform.parent.parent);
+            newEmpty.transform.LookAt(transform.parent.position);
 
             _positionsForShield.Add(newEmpty.transform);
 
 
         }
+    }
+
+    private void Update()
+    {
+        HoldingShieldAtPositions();
+    }
+
+    private void HoldingShieldAtPositions()
+    {
+        TakeClosestPositionToWeapon();
+    }
+
+    private void TakeClosestPositionToWeapon()
+    {
+        Transform rightPosition = GetRightPosition();
+
+        transform.position = Vector3.Lerp(transform.position, rightPosition.position, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rightPosition.rotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private Transform GetRightPosition()
+    {
+        Transform position = null;
+        float lowestDistance = Mathf.Infinity;
+        
+        for (int i = 0; i < _positionsForShield.Count; i++)
+        {
+            float distance = Vector3.Distance(_positionsForShield[i].position, leftArm.position);
+
+            if (distance < lowestDistance)
+            {
+                lowestDistance = distance;
+                position = _positionsForShield[i];
+            }
+        }
+
+        return position;
     }
 
 }

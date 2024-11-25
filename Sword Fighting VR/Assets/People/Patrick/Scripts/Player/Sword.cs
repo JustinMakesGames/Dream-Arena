@@ -25,7 +25,7 @@ public class Sword : Weapon
                                                   * distancePunishment * timePunishment);
         _lastInputRot = rot;
         _timeSinceLastDamage = 0;
-        return damage;
+        return 100;
     }
     #endregion
     

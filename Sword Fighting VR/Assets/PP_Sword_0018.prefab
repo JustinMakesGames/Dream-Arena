@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2669381072556506140}
   - component: {fileID: 8489537548630567545}
   - component: {fileID: 5936785394703902353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PP_Sword_0018
   m_TagString: Weapon
   m_Icon: {fileID: 0}

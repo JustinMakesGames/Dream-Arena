@@ -251,7 +251,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            print("Got hit");
+            print("Got hit: " + transform.name);
         }
     }
 
