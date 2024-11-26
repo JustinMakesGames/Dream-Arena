@@ -13,17 +13,18 @@ public abstract class Weapon : MonoBehaviour
     [HideInInspector] public InputActionProperty inputActionRotation;
     [HideInInspector] public ActionBasedController controller;
     public WeaponSO weaponSo;
+    //Make sure these variables can only be accessed from classes which derive from this one,
+    //while still making sure other scripts can get the values.
     protected bool ignoresArmor;
+    public bool IgnoresArmor() => ignoresArmor;
     protected int baseDamage;
+    public int GetDamage() => baseDamage;
+    public bool isEquipped;
     private void Start()
     {
         UpdateController();
     }
-
-    public bool GetArmorBool()
-    {
-        return ignoresArmor;
-    }
+    
     private void OnTransformParentChanged()
     {
         UpdateController();

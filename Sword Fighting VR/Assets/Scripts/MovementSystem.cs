@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,14 +9,11 @@ public class MovementSystem : MonoBehaviour
     [SerializeField] private InputActionProperty up;
     [SerializeField] private InputActionProperty down;
     [SerializeField] private Transform cam;
-
     [SerializeField] private float speed;
     [SerializeField] private float rotateSpeed;
-
     private Quaternion _originalRotation;
     private Vector3 _direction;
     private Vector2 _rotation;
-
     private float _xRotation;
     private Rigidbody _rb;
     private float _up;
@@ -77,5 +72,4 @@ public class MovementSystem : MonoBehaviour
 
         cam.rotation = Quaternion.Euler(cam.rotation.x, _xRotation, cam.rotation.z);       
     }
-
 }
