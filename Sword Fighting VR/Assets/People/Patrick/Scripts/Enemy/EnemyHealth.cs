@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         _health = stats.health;
     }
 
-    public void CalculateDamage(ColliderType colType, bool hasArmor, float armorDamageReduction, int baseDamage)
+    public void CalculateDamage(ColliderType colType, bool hasArmor, float armorDamageReduction, int baseDamage, bool ignoresArmor)
     {
         //When you hit the head we want it to do more damage than if you hit the arms,
         //so this is going to add a modifier depending on where you hit.
@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
             _ => baseDamage
         });
         //Taking armor into account however how armor works in the future is subject to change.
-        if (hasArmor) damage = Mathf.RoundToInt(damage * armorDamageReduction);
+        if (hasArmor && !ignoresArmor) damage = Mathf.RoundToInt(damage * armorDamageReduction);
         TakeDamage(damage);
     }
 
