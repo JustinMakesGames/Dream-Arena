@@ -234,6 +234,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 674477193}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &157449573 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3466534214309459134, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &162730693
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +474,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3fe2d84ff18fe48abfd173e021cbbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &188806964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188806955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d36ebad80f7a0e43a6b7ff638fd2e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handPosition: {fileID: 1919020988}
+  holdingThisObject: {fileID: 0}
+  maxDistance: 10
 --- !u!1 &225400007
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +594,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225400007}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &258794108 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2932376265677413161, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &282305905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2260775182879137623, guid: c86c7de9c7b20c34d9f66f7d954d4647,
@@ -1128,6 +1155,11 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 1408
       objectReference: {fileID: 0}
+    - target: {fileID: 3014995677685159312, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3472326752510281043, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
       propertyPath: m_ModelPrefab
@@ -1223,6 +1255,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6764300908208923887, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9205139633689618709, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
       propertyPath: m_TagString
@@ -1268,6 +1305,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 188806960}
+    - targetCorrespondingSourceObject: {fileID: 3120938216780766014, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 188806964}
+    - targetCorrespondingSourceObject: {fileID: 7090784729636183306, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1430097973}
+    - targetCorrespondingSourceObject: {fileID: 8801463381028693206, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1919020992}
+    - targetCorrespondingSourceObject: {fileID: 3405979563711277130, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1032972691}
   m_SourcePrefab: {fileID: 100100000, guid: c86c7de9c7b20c34d9f66f7d954d4647, type: 3}
 --- !u!1 &696945514
 GameObject:
@@ -2482,6 +2535,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021605338}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1032972686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3405979563711277130, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1032972687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4234660376628519141, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1032972691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032972686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52025f4b8e326664ea53993dcbd2e017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinchAnimation:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Pinch Animation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 737233a3-af37-4f16-8eb0-0cf83bb0abc4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  grabAnimation:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Animation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: a6b28eee-a90e-40e9-9111-0f3a697f7d99
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 15759602096507913, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  handAnimator: {fileID: 157449573}
+  pinchInput: 0
+  grabInput: 0
 --- !u!1 &1215773961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,6 +2919,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be3083a5f26d4e859d594ecbe632f87e, type: 3}
+--- !u!1 &1430097969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7090784729636183306, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1430097973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430097969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d36ebad80f7a0e43a6b7ff638fd2e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handPosition: {fileID: 1032972687}
+  holdingThisObject: {fileID: 0}
+  maxDistance: 5
 --- !u!1 &1441095401
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,7 +3936,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.2, z: 0}
@@ -4788,6 +4915,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 753724249}
   m_SourcePrefab: {fileID: 100100000, guid: ab26e4707a29cc44aa3f8af24f1ee42f, type: 3}
+--- !u!1 &1919020987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8801463381028693206, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1919020988 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2392954180416998883, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+    type: 3}
+  m_PrefabInstance: {fileID: 674477193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1919020992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919020987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52025f4b8e326664ea53993dcbd2e017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinchAnimation:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Pinch Animation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: fe0ab7c9-8735-43ce-bc05-5f99562f59e3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  grabAnimation:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Animation
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: cf4cb030-5739-4eaa-8351-78bd0b054f2f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3742484312079769484, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  handAnimator: {fileID: 258794108}
+  pinchInput: 0
+  grabInput: 0
 --- !u!1 &1930711673
 GameObject:
   m_ObjectHideFlags: 0

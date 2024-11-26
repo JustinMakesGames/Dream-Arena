@@ -82,8 +82,6 @@ public class SwordBehaviour : MonoBehaviour
         while (enemyAIScript.isAttacking)
         {
             slashingAnimator.SetTrigger("RightSlashTrigger");
-            yield return null;
-            print(slashingAnimator.GetCurrentAnimatorStateInfo(0).length);
             yield return new WaitForSeconds(0.5f);
 
         }

@@ -11,6 +11,7 @@ public class EnemyShieldBehaviour : MonoBehaviour
     [SerializeField] private GameObject positionPrefabEmpty;
     [SerializeField] private float rotationSpeed;
     private List<Transform> _positionsForShield = new List<Transform>();
+    private bool shieldHit;
 
     public Transform leftArm;
 
@@ -41,6 +42,7 @@ public class EnemyShieldBehaviour : MonoBehaviour
     private void Update()
     {
         HoldingShieldAtPositions();
+        
     }
 
     private void HoldingShieldAtPositions()
@@ -75,12 +77,17 @@ public class EnemyShieldBehaviour : MonoBehaviour
         return position;
     }
 
-    private void OnCollisionEnter(Collision collision)
+   
+
+    /*private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.CompareTag("Weapon"))
+        if (other.transform.CompareTag("Weapon"))
         {
-            
+            Vector3 direction = -transform.parent.parent.forward;
+            direction.y = 0;
+
+            transform.parent.parent.GetComponent<EnemyAI>().HandleKnockback(direction.normalized);
         }
-    }
+    }*/
 
 }

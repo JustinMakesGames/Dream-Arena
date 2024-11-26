@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent _agent;
     private Vector3 _originalPosition;
     private bool hasFound;
+    private bool hasMoved;
 
     [Header("Player Spotted")]
     [SerializeField] private Transform player;
@@ -29,7 +30,11 @@ public class EnemyAI : MonoBehaviour
     private SwordBehaviour _swordBehaviourScript;
     public float changeAngle;
     public bool isAttacking;
-    public enum EnemyStates : byte
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackForce;
+    private Rigidbody _rb;
+    public enum EnemyStates
     {
         Idle,
         PlayerSpotted,
@@ -41,6 +46,7 @@ public class EnemyAI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _originalPosition = transform.position;
         _swordBehaviourScript = GetComponentInChildren<SwordBehaviour>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -67,7 +73,7 @@ public class EnemyAI : MonoBehaviour
 
     private void SwitchOnce()
     {
-        _agent.speed = 10f;
+        _agent.speed = 5f;
         switch (enemyState)
         {
             case EnemyStates.Idle:
@@ -116,9 +122,10 @@ public class EnemyAI : MonoBehaviour
 
     private void SearchForNewPosition()
     {
-        if (Vector3.Distance(transform.position, _endDestination) < 0.1f)
+        if (Vector3.Distance(transform.position, _endDestination) < 0.5f && !hasMoved)
         {
             _endDestination = GetPosition();
+            hasMoved = true;
             StartCoroutine(WaitForNewPosition());
         }   
     }
@@ -127,6 +134,7 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(intervalTime);
         _agent.SetDestination(_endDestination);
+        hasMoved = false;
     }
     private Vector3 GetPosition()
     {
@@ -247,6 +255,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+
+
+
+    #endregion
+
+    #region HandleDamage
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Weapon"))
@@ -255,5 +269,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    /*public void HandleKnockback(Vector3 direction)
+    {
+        _rb.AddForce(direction * knockbackForce, ForceMode.VelocityChange);
+        print("WOWIE YOU DID IT " + _rb.velocity);
+    }*/
+
     #endregion
+
+
 }

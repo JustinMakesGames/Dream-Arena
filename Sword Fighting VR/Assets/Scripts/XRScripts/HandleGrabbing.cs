@@ -22,6 +22,7 @@ public class HandleGrabbing : MonoBehaviour
     public void RemoveObject(Transform obj)
     {
         holdingThisObject = null;
+
     }
 
     private void CheckForDistance()
@@ -45,4 +46,6 @@ public class HandleGrabbing : MonoBehaviour
             
         }
     }
+
+    
 }
