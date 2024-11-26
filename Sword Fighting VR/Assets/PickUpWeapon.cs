@@ -8,16 +8,14 @@ public class PickUpWeapon : XRGrabInteractable
 {
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        GetComponent<Sword>().enabled = true;
-        GetComponent<Sword>().SetHandLocation(args.interactableObject.transform);
+        args.interactorObject.transform.GetComponent<HandleGrabbing>().AttachObject(transform);
         base.OnSelectEntered(args);
         
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        GetComponent<Sword>().enabled = false;
-        GetComponent<Sword>().SetHandLocation(null);
+        args.interactorObject.transform.GetComponent<HandleGrabbing>().RemoveObject(transform);
         base.OnSelectExited(args);
     }
 

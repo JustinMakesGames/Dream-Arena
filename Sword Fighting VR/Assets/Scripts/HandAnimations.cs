@@ -9,6 +9,9 @@ public class HandAnimations : MonoBehaviour
     public InputActionProperty grabAnimation;
     public Animator handAnimator;
 
+    public float pinchInput;
+    public float grabInput;
+
     private void Update()
     {
         ControlHandAnimations();
@@ -16,10 +19,10 @@ public class HandAnimations : MonoBehaviour
 
     private void ControlHandAnimations()
     {
-        float pinchInput = pinchAnimation.action.ReadValue<float>();
+        pinchInput = pinchAnimation.action.ReadValue<float>();
         handAnimator.SetFloat("Trigger", pinchInput);
 
-        float grabInput = grabAnimation.action.ReadValue<float>();
+        grabInput = grabAnimation.action.ReadValue<float>();
         handAnimator.SetFloat("Grip", grabInput);
     }
 }
