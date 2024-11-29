@@ -20,6 +20,7 @@ public abstract class Weapon : MonoBehaviour
     protected int baseDamage;
     public int GetDamage() => baseDamage;
     public bool isEquipped;
+    
     private void Start()
     {
         UpdateController();
@@ -36,5 +37,9 @@ public abstract class Weapon : MonoBehaviour
         inputActionPosition = controller.positionAction;
         inputActionRotation = controller.rotationAction;
     }
-    public abstract int GetDamage(Collider collision);
+
+    public virtual int GetDamage(Collider collision)
+    {
+        return weaponSo.damage;
+    }
 }

@@ -151,6 +151,7 @@ MonoBehaviour:
   plusOffset: 0
   changeAngle: 0
   isAttacking: 0
+  knockbackForce: 0
 --- !u!195 &143217733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -323,6 +324,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ce06ab5e8023eaa45aedb37ec6aa1703, type: 2}
+    - target: {fileID: 7480517337818999365, guid: c7116b6c825c8b845b17d603ecbe3177,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.269
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -499,11 +505,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e67419d2d0b3ff4aa0fd1453c1d28fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ikActive: 0
   rightHandObj: {fileID: 865805932}
   lookObj: {fileID: 865805932}
   player: {fileID: 0}
-  timeBetweenBlocks: 0.5
+  timeBetweenBlocks: 0
 --- !u!1 &520844509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4012286439190566368, guid: 7e59c6476e6dc4a42b391920dba3b82b,
@@ -532,6 +537,7 @@ MonoBehaviour:
   plusOffset: 0
   changeAngle: 0
   isAttacking: 0
+  knockbackForce: 0
 --- !u!195 &520844517
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -582,6 +588,7 @@ MonoBehaviour:
   plusOffset: 0
   changeAngle: 0
   isAttacking: 0
+  knockbackForce: 0
 --- !u!195 &557231272
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -632,6 +639,7 @@ MonoBehaviour:
   plusOffset: 0
   changeAngle: 0
   isAttacking: 0
+  knockbackForce: 0
 --- !u!195 &682055675
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6063,6 +6071,7 @@ MonoBehaviour:
   plusOffset: 0
   changeAngle: 0
   isAttacking: 0
+  knockbackForce: 0
 --- !u!195 &1100914840
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7557,6 +7566,7 @@ MonoBehaviour:
   plusOffset: 0
   changeAngle: 0
   isAttacking: 0
+  knockbackForce: 0
 --- !u!195 &1944466059
 NavMeshAgent:
   m_ObjectHideFlags: 0
