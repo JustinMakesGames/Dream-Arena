@@ -15,9 +15,7 @@ public class IKControl : MonoBehaviour {
     private bool _hasBlocked;
     private bool _isFrozen;
     private Vector3 _frozenRightHandPosition;
-    private Quaternion _frozenRightHandRotation;
     [SerializeField] private float timeBetweenBlocks;
-    
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -28,7 +26,7 @@ public class IKControl : MonoBehaviour {
         _ikActive = Vector3.Distance(transform.position, FindActiveWeapon().transform.position) <= 5;
         if (_ikActive)
         {
-            rightHandObj = FindActiveWeapon().transform.GetChild(0);
+            rightHandObj = FindActiveWeapon().transform;
             lookObj = rightHandObj;
         }
     }
@@ -37,37 +35,35 @@ public class IKControl : MonoBehaviour {
 
     private void OnAnimatorIK(int layerIndex)
     {
-        if (!_animator) return;
-        if(_ikActive)
+        if (_animator) 
         {
-            if(lookObj) {
-                _animator.SetLookAtWeight(1);
-                _animator.SetLookAtPosition(lookObj.position);
-            }
-
-            if (!rightHandObj) return;
-            if (!_isFrozen)
+            if(_ikActive)
             {
-                _currentPos = _animator.GetIKPosition(AvatarIKGoal.RightHand);
-                _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                _animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
-                _animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.rotation);
-                FreezeIK();
+                if(lookObj != null) {
+                    _animator.SetLookAtWeight(1);
+                    _animator.SetLookAtPosition(lookObj.position);
+                }
+                if(rightHandObj != null)
+                {
+                    if (!_isFrozen)
+                    {
+                        _currentPos = _animator.GetIKPosition(AvatarIKGoal.RightHand);
+                        _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+                        _animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
+                        FreezeIK();
+                    }
+                    else
+                    {
+                        _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);  
+                        _animator.SetIKPosition(AvatarIKGoal.RightHand, _frozenRightHandPosition);
+                    }
+                }
             }
             else
             {
-                _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                _animator.SetIKPosition(AvatarIKGoal.RightHand, _frozenRightHandPosition - new Vector3(0, 0, 180));
-                _animator.SetIKRotation(AvatarIKGoal.RightHand, _frozenRightHandRotation);
+                _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
+                _animator.SetLookAtWeight(0);
             }
-        }
-        else
-        {
-            _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 0);
-            _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
-            _animator.SetLookAtWeight(0);
         }
     }
     

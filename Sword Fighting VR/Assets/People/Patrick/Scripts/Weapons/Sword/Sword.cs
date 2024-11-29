@@ -8,6 +8,7 @@ public class Sword : Weapon
     #region Variables
     private float _timeSinceLastDamage;
     private Vector3 _lastInputRot;
+    private PhysicsHand _currentHand;
     protected override void Start()
     {
         base.Start();
@@ -27,17 +28,16 @@ public class Sword : Weapon
     public override int GetDamage(Collider collision)
     {
         Vector3 rot = inputActionRotation.action.ReadValue<Quaternion>().eulerAngles.normalized;
-        Vector3 normalizedInput = inputActionPosition.action.ReadValue<Vector3>().normalized + rot;
+        Vector3 velocity = _currentHand.GetComponent<Rigidbody>().velocity;
 
         print("Rotation: " + rot.magnitude);
-        print("NormalizedInput: " + normalizedInput.magnitude);
         float timePunishment = TimePunishment();
 
         print("TimePunishment " + timePunishment);
 
         if (_timeSinceLastDamage <= 0.1f) return 0;
         if (rot == _lastInputRot) return 0;
-        int damage = Mathf.RoundToInt(baseDamage * normalizedInput.magnitude);
+        int damage = Mathf.RoundToInt(baseDamage * velocity.magnitude);
         damage = Mathf.RoundToInt(damage * timePunishment);
         _lastInputRot = rot;
         _timeSinceLastDamage = 0;
