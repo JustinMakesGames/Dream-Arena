@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PhysicsHand : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    public Transform target;
     private Rigidbody _rb;
     private Rigidbody _heldItem;
     private ActionBasedController _actionBasedController;

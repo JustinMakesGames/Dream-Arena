@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[Serializable]
 public struct EnemyCombination
 {
     public string groupName;
-    public GameObject possibleEnemies;
+    public List<GameObject> possibleEnemies;
 
-    public int scoreCost;
+    public int minScoreCost;
+    public int maxScoreCost;
     public enum EnemyOrder
     {
         Order,
@@ -20,11 +23,15 @@ public struct EnemyCombination
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private int roomNumber;
+    public int score;
+    [HideInInspector] public int livingEnemyAmount;
     [SerializeField] private int maxRooms;
 
-    
-    [HideInInspector] public int livingEnemyAmount;
+    public List<GameObject> enemies;
+
+    private bool hasBattleBegun;
+
+
 
 
     private void Awake()
@@ -35,9 +42,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void StartBattle()
+    {
+        hasBattleBegun = true;
+    }
 
-    
+    public void SetEnemy(GameObject enemy)
+    {
+        enemies.Add(enemy);
+    }
+
+    public void InitializeBattle()
+    {
+        FindObjectOfType<HandleBattling>().enabled = true;
+    }
+
+
+
 
 
 }

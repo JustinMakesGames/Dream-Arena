@@ -39,9 +39,10 @@ public class EnemyHealth : MonoBehaviour
         TakeDamage(damage);
     }
 
-    private void TakeDamage(int damage) 
+    public void TakeDamage(int damage)
     {
         _health -= damage;
+        print("Damage taken: " + damage);
         if (_health <= 0)
         {
             Destroy(gameObject);

@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
 
-public abstract class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [HideInInspector] public InputActionProperty inputActionPosition;
     [HideInInspector] public InputActionProperty inputActionRotation;
@@ -21,7 +21,7 @@ public abstract class Weapon : MonoBehaviour
     public int GetDamage() => baseDamage;
     public bool isEquipped;
     
-    private void Start()
+    protected virtual void Start()
     {
         UpdateController();
     }
@@ -33,7 +33,7 @@ public abstract class Weapon : MonoBehaviour
     
     private void UpdateController()
     {
-        controller = transform.parent.GetComponent<ActionBasedController>();
+        controller = transform.GetComponent<PhysicsHand>().target.GetComponent<ActionBasedController>();
         inputActionPosition = controller.positionAction;
         inputActionRotation = controller.rotationAction;
     }
@@ -42,4 +42,6 @@ public abstract class Weapon : MonoBehaviour
     {
         return weaponSo.damage;
     }
+
+    
 }

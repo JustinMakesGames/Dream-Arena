@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class EnemyShieldBehaviour : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class EnemyShieldBehaviour : MonoBehaviour
 
     private void Start()
     {
+        leftArm = PlayerReferenceScript.Instance.transform;
         MakeAngle();
 
     }

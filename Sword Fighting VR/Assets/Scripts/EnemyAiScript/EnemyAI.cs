@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     private bool hasMoved;
 
     [Header("Player Spotted")]
-    [SerializeField] private Transform player;
+    private Transform _player;
     [SerializeField] private float enemyPositionOffset;
     [SerializeField] private float lookRange;
 
@@ -34,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     [Header("Knockback")]
     [SerializeField] private float knockbackForce;
     private Rigidbody _rb;
+
+    public EnemyStats enemyStats;
     public enum EnemyStates
     {
         Idle,
@@ -43,6 +45,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        
         _agent = GetComponent<NavMeshAgent>();
         _originalPosition = transform.position;
         _swordBehaviourScript = GetComponentInChildren<SwordBehaviour>();
@@ -51,6 +54,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        _player = PlayerReferenceScript.Instance.transform;
         SwitchOnce();
     }
 
@@ -113,7 +117,7 @@ public class EnemyAI : MonoBehaviour
 
     private void CheckForPlayer()
     {
-        if (Vector3.Distance(player.position, transform.position) < lookRange)
+        if (Vector3.Distance(_player.position, transform.position) < lookRange)
         {
             enemyState = EnemyStates.PlayerSpotted;
             SwitchOnce();
@@ -168,9 +172,9 @@ public class EnemyAI : MonoBehaviour
 
     private Vector3 CalculateTargetPosition()
     {
-        Vector3 directionToPlayer = player.position - transform.position;
+        Vector3 directionToPlayer = _player.position - transform.position;
         directionToPlayer.Normalize();
-        Vector3 endPosition = player.position - directionToPlayer * enemyPositionOffset;
+        Vector3 endPosition = _player.position - directionToPlayer * enemyPositionOffset;
         return endPosition;
     }
 
@@ -203,7 +207,7 @@ public class EnemyAI : MonoBehaviour
 
     private void MoveAroundPlayer()
     {
-        transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
+        transform.LookAt(new Vector3(_player.position.x, transform.position.y, _player.position.z));
         if (Vector3.Distance(transform.position, _newAttackDestination) == 0)
         {
             _newAttackDestination = CalculatePositionToGo();
@@ -213,7 +217,7 @@ public class EnemyAI : MonoBehaviour
 
     private void CheckIfPlayerIsGone()
     {
-        if (Vector3.Distance(player.position, transform.position) > playerRange)
+        if (Vector3.Distance(_player.position, transform.position) > playerRange)
         {
             enemyState = EnemyStates.PlayerSpotted;
             _agent.updateRotation = true;
@@ -224,10 +228,10 @@ public class EnemyAI : MonoBehaviour
 
     private float CalculateFirstPosition()
     {
-        Vector3 direction = (transform.position - player.position).normalized;
+        Vector3 direction = (transform.position - _player.position).normalized;
 
         direction.y = 0;
-        float angleFromPlayer  = Vector3.SignedAngle(player.position, direction, Vector3.up);
+        float angleFromPlayer  = Vector3.SignedAngle(_player.position, direction, Vector3.up);
 
         return angleFromPlayer;
     }
@@ -236,46 +240,24 @@ public class EnemyAI : MonoBehaviour
     {
         changeAngle += Random.Range(-20, 20);
         float radians = changeAngle * Mathf.Deg2Rad;
-        Vector3 offset = new Vector3(player.position.x + Mathf.Cos(radians) * plusOffset, transform.position.y, player.position.z + Mathf.Sin(radians) * plusOffset);
+        Vector3 offset = new Vector3(_player.position.x + Mathf.Cos(radians) * plusOffset, transform.position.y, _player.position.z + Mathf.Sin(radians) * plusOffset);
         return offset;
     }
 
     private void CheckForAttackDistance()
     {
-        if (Vector3.Distance(transform.position, player.position) < playerRange && !isAttacking)
+        if (Vector3.Distance(transform.position, _player.position) < playerRange && !isAttacking)
         {
             isAttacking = true;
             _swordBehaviourScript.StartAttacking();
             
         }
 
-        else if (Vector3.Distance(transform.position, player.position) > playerRange && isAttacking)
+        else if (Vector3.Distance(transform.position, _player.position) > playerRange && isAttacking)
         {
             isAttacking = false;
         }
     }
-
-
-
-
     #endregion
-
-    #region HandleDamage
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Weapon"))
-        {
-            print("Got hit: " + transform.name);
-        }
-    }
-
-    /*public void HandleKnockback(Vector3 direction)
-    {
-        _rb.AddForce(direction * knockbackForce, ForceMode.VelocityChange);
-        print("WOWIE YOU DID IT " + _rb.velocity);
-    }*/
-
-    #endregion
-
 
 }
