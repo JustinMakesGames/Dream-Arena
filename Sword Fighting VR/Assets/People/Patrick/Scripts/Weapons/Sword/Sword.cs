@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
+[RequireComponent(typeof(BoxCollider))]
 public class Sword : Weapon
 {
     #region Variables
@@ -27,14 +28,13 @@ public class Sword : Weapon
 
     public override int GetDamage(Collider collision)
     {
+        //Checks to make sure player has moved his sword at all since last attack.
         Vector3 rot = inputActionRotation.action.ReadValue<Quaternion>().eulerAngles.normalized;
         Vector3 velocity = _currentHand.GetComponent<Rigidbody>().velocity;
-
-        print("Rotation: " + rot.magnitude);
+        
         float timePunishment = TimePunishment();
 
-        print("TimePunishment " + timePunishment);
-
+        //returns 0 if the player has basically not moved at all or attacked too fast.
         if (_timeSinceLastDamage <= 0.1f) return 0;
         if (rot == _lastInputRot) return 0;
         int damage = Mathf.RoundToInt(baseDamage * velocity.magnitude);

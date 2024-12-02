@@ -7,6 +7,7 @@ public class GrabInteractable : XRGrabInteractable
 {
     private Collider _collider;
     private LayerMask _layerMask;
+    private XRBaseInteractor _interactor;
     private void Start()
     {
         _collider = GetComponent<Collider>();
@@ -42,7 +43,7 @@ public class GrabInteractable : XRGrabInteractable
 
     private IEnumerator WaitForDrop(LayerMask mask)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => Vector3.Distance(gameObject.transform.position, _interactor.transform.position) <= 1f);
         Physics.IgnoreLayerCollision(mask, gameObject.layer, false);
 
     }

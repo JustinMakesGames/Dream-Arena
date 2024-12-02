@@ -20,8 +20,7 @@ public class CollisionHandler : MonoBehaviour
             StartCoroutine(ChangeColor());
         }
     }
-
-    //Make sure it doesn't stay red lmao
+    
     IEnumerator ChangeColor()
     {
         transform.root.GetComponent<MeshRenderer>().material.color = Color.red;

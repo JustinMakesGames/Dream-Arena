@@ -5,7 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(BoxCollider))]
 
 public class Weapon : MonoBehaviour
 {
