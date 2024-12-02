@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class HandleBattling : MonoBehaviour
 {
-    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject inDoor;
+    [SerializeField] private GameObject outDoor;
 
     [SerializeField] private Transform wallFolder;
     private List<Transform> walls = new List<Transform>();
     private Bounds bounds;
 
-    private void Start()
+    
+    public void HandleSpawningDoor()
     {
-        HandleWinning();
+        SpawnDoor(outDoor);
     }
     public void HandleWinning()
     {
-        SpawnDoor();
+        SpawnDoor(inDoor);
+        GameManager.Instance.EndBattle();
     }
-
-    private void SpawnDoor()
+   
+    private void SpawnDoor(GameObject door)
     {
         for (int i = 0; i < wallFolder.childCount; i++)
         {
@@ -32,6 +35,7 @@ public class HandleBattling : MonoBehaviour
 
         GameObject cloneDoor = Instantiate(door, Vector3.zero, walls[randomWall].rotation, transform);
         cloneDoor.transform.position = randomPos;
+        cloneDoor.transform.parent = walls[randomWall];
     }
 
     private Vector3 SearchRandomDoorPosition(int index)
@@ -41,10 +45,12 @@ public class HandleBattling : MonoBehaviour
         Vector3 localPos = new Vector3(
             Random.Range(minLocal.x, maxLocal.x),
             minLocal.y,
-           maxLocal.z);
+           transform.forward.z * 0.5f);
 
         Vector3 newPos = walls[index].TransformPoint(localPos);
 
         return newPos;
     }
+
+
 }

@@ -20,6 +20,12 @@ public class RoomHandler : MonoBehaviour
         SetEnemyPositionsInArray();
         ChooseEnemyGroup();
         SpawningEnemies();
+        HandleBeginningBattle();
+    }
+
+    public void StartGenerating()
+    {
+        
     }
 
     private void SetEnemyPositionsInArray()
@@ -53,16 +59,16 @@ public class RoomHandler : MonoBehaviour
                 int randomPosition = Random.Range(0, enemyPositions.Count);
 
                 GameObject enemy = Instantiate(_chosenEnemyGroup.possibleEnemies[randomEnemy], enemyPositions[randomPosition].position, Quaternion.identity);
-
-                
                 GameManager.Instance.SetEnemy(enemy);
-
-
             }
         }
-        
-                            
-    
     }
+
+    private void HandleBeginningBattle()
+    {
+        GameManager.Instance.StartBattle();
+    }
+
+
 
 }

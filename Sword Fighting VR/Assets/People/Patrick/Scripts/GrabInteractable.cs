@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(Collider))]

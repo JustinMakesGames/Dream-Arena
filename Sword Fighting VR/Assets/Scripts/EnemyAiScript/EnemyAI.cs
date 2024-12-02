@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Idle Variables")]
 
     [SerializeField] private float range;
-    public EnemyStates enemyState;
+    public EnemyBehaviourStates enemyState;
     [SerializeField] private float intervalTime;
     private Vector3 _endDestination;
     private NavMeshAgent _agent;
@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody _rb;
 
     public EnemyStats enemyStats;
-    public enum EnemyStates
+    public enum EnemyBehaviourStates
     {
         Idle,
         PlayerSpotted,
@@ -63,13 +63,13 @@ public class EnemyAI : MonoBehaviour
         CheckForAttackDistance();
         switch (enemyState)
         {
-            case EnemyStates.Idle:
+            case EnemyBehaviourStates.Idle:
                 HandlingIdle();
                 break;
-            case EnemyStates.PlayerSpotted:
+            case EnemyBehaviourStates.PlayerSpotted:
 
                 break;
-            case EnemyStates.PlayerAttack:
+            case EnemyBehaviourStates.PlayerAttack:
                 HandlePlayerAttacking();
                 break;
         }
@@ -80,14 +80,14 @@ public class EnemyAI : MonoBehaviour
         _agent.speed = 5f;
         switch (enemyState)
         {
-            case EnemyStates.Idle:
+            case EnemyBehaviourStates.Idle:
                 StartPreparingIdle();
                 break;
-            case EnemyStates.PlayerSpotted:
+            case EnemyBehaviourStates.PlayerSpotted:
                 StartPlayerSpotted();
                 break;
 
-            case EnemyStates.PlayerAttack:
+            case EnemyBehaviourStates.PlayerAttack:
                 StartPreparingAttack();
                 break;
 
@@ -99,12 +99,12 @@ public class EnemyAI : MonoBehaviour
 
     private void StartPreparingIdle()
     {
-        UnSubscribingFunctions();
+        UnsubscribeFromOnTick();
         _endDestination = GetPosition();
         _agent.SetDestination(_endDestination);
     }
 
-    private void UnSubscribingFunctions()
+    private void UnsubscribeFromOnTick()
     {
         OnTick.Instance.onTickEvent -= MoveToThePlayer;
             
@@ -119,7 +119,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (Vector3.Distance(_player.position, transform.position) < lookRange)
         {
-            enemyState = EnemyStates.PlayerSpotted;
+            enemyState = EnemyBehaviourStates.PlayerSpotted;
             SwitchOnce();
         }
     }
@@ -165,7 +165,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Vector3.Distance(targetPosition, transform.position) < 0.3f)
         {
-            enemyState = EnemyStates.PlayerAttack;
+            enemyState = EnemyBehaviourStates.PlayerAttack;
             SwitchOnce();
         } 
     }
@@ -189,7 +189,7 @@ public class EnemyAI : MonoBehaviour
         changeAngle = CalculateFirstPosition();
         _newAttackDestination = CalculatePositionToGo();
         _agent.SetDestination(_newAttackDestination);
-        UnSubscribingFunctions();
+        UnsubscribeFromOnTick();
     }
 
     private void NavMeshAgentStatsChange()
@@ -219,7 +219,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (Vector3.Distance(_player.position, transform.position) > playerRange)
         {
-            enemyState = EnemyStates.PlayerSpotted;
+            enemyState = EnemyBehaviourStates.PlayerSpotted;
             _agent.updateRotation = true;
             MoveToThePlayer();
             SwitchOnce();
@@ -258,6 +258,13 @@ public class EnemyAI : MonoBehaviour
             isAttacking = false;
         }
     }
+
+
     #endregion
+
+    private void OnDestroy()
+    {
+        OnTick.Instance.onTickEvent -= MoveToThePlayer;
+    }
 
 }

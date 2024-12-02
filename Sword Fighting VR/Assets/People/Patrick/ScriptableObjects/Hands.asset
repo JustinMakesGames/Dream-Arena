@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c9a09cd545aae44a828128b11482e8, type: 3}
   m_Name: Hands
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 2
   ignoresArmor: 0
