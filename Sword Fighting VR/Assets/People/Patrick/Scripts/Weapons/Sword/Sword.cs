@@ -44,7 +44,6 @@ public class Sword : Weapon
         print(damage);
         return damage;
     }
-
     #endregion
 
     #region Punishments

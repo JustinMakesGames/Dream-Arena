@@ -20,6 +20,7 @@ public class IKControl : MonoBehaviour {
     private Vector3 _frozenRightHandPosition;
     [SerializeField] private float timeBetweenBlocks;
     [SerializeField] private float distance;
+    private bool _doesPlayerHaveAWeapon;
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -27,14 +28,23 @@ public class IKControl : MonoBehaviour {
 
     private void Update()
     {
-        _ikActive = Vector3.Distance(transform.position, FindActiveWeapon().transform.position) <= distance;
+        if (FindActiveWeapon() != null)
+        {
+            _ikActive = Vector3.Distance(transform.position, FindActiveWeapon().transform.position) <= distance;
+        }
+        else _ikActive = false;
         if (_ikActive)
         {
             rightHandObj = FindActiveWeapon().transform;
             lookObj = rightHandObj;
         }
     }
-    private Weapon FindActiveWeapon() => FindObjectsByType<Weapon>(FindObjectsSortMode.None).First(x => x.isEquipped);
+    
+    private Weapon FindActiveWeapon()
+    {
+        Weapon[] foundWeapons = FindObjectsOfType<Weapon>();
+        return foundWeapons.Length == 0 ? null : foundWeapons.FirstOrDefault(x => x.isEquipped);
+    }
     
     private void OnAnimatorIK(int layerIndex)
     {

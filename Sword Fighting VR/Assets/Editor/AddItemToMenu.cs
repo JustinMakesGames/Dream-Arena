@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MenuItem : MonoBehaviour
+public class AddItemToMenu : MonoBehaviour
 {
+    static void LoadObject(string path, MenuCommand menuCommand)
+    {
+        GameObject obj = Resources.Load(path) as GameObject;
+        InstantiatePrefab(obj, menuCommand);
+    }
     static void InstantiatePrefab(GameObject prefab, MenuCommand menuCommand)
     {
         GameObject go = Instantiate(prefab);
@@ -12,12 +17,17 @@ public class MenuItem : MonoBehaviour
         Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
         Selection.activeObject = go;
     }
-    [UnityEditor.MenuItem("GameObject/Custom/Ticker")]
+    [MenuItem("GameObject/Custom/Ticker")]
     public static void AddTicker(MenuCommand menuCommand)
     {
-        string path = "Ticker";
-        GameObject go = Resources.Load<GameObject>(path);
-        InstantiatePrefab(go, menuCommand);
+        LoadObject("Ticker", menuCommand);
     }
+
+    [MenuItem("GameObject/Weapons/Sword")]
+    public static void AddSword(MenuCommand menuCommand)
+    {
+        LoadObject("Sword", menuCommand);
+    }
+    
     
 }

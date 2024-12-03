@@ -3,7 +3,11 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Unity.VisualScripting;
 
+[RequireComponent(typeof(Weapon))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class SwordPhysics : MonoBehaviour
 {
     private ActionBasedController _controller;
@@ -12,36 +16,41 @@ public class SwordPhysics : MonoBehaviour
     private PhysicsHand _rbHand;
     private Rigidbody _rb;
     private Transform _origin;
+    private List<Coroutine> _currentlyActiveCoroutines = new();
 
+    private void Start()
+    {
+        StartCoroutine(PhysicsHandling());
+    }
     private void OnTransformParentChanged()
     {
+        if (!GetComponent<Weapon>().isEquipped) return;
         _rbHand = GetComponentInParent<PhysicsHand>();
         _rb = _rbHand.GetComponent<Rigidbody>();
         _controller = _rbHand.target.GetComponent<ActionBasedController>();
         _inputActionPosition = _controller.positionAction;
         _inputActionRotation = _controller.rotationAction;
+        
     }
 
-    public void FixedUpdate()
+    IEnumerator PhysicsHandling()
     {
-        if (!_rb) return;
-        Vector3 normalizedInput = (_inputActionPosition.action.ReadValue<Vector3>() 
-                                  + _inputActionRotation.action.ReadValue<Vector3>()).normalized;
-        if (_rb.velocity.magnitude > 0.1f && normalizedInput.magnitude > 0.5f)
+        while (true)
         {
-            if (_origin.position != Vector3.zero && _origin.rotation != Quaternion.identity)
-            {
-                _origin.position = _rb.position;
-                _origin.rotation = _rb.rotation;
-                StartCoroutine(SlerpToPosition(_origin.position, _rb.position, Time.deltaTime / _rb.mass));
-                StartCoroutine(SlerpToRotation(_origin.rotation, _rb.rotation, Time.deltaTime / _rb.mass));
-            }
+            _origin = _rb.transform;
+            yield return new WaitUntil(() => _origin.position != _rb.position);
+            
+            StartCoroutine(SlerpToPosition(_origin.position, _rb.position, 
+                (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude)); 
+            StartCoroutine(SlerpToRotation(_origin.rotation, _rb.rotation, 
+                (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude)));
+            yield return new WaitForFixedUpdate();
+            
         }
     }
-
     IEnumerator SlerpToPosition(Vector3 from, Vector3 to, float t)
     {
-        while (Vector3.Distance(from, to) > 0.1f)
+        while (transform.position != to)
         {
             transform.position = Vector3.Slerp(from, to, t);
             yield return null;

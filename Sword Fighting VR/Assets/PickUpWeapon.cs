@@ -12,7 +12,9 @@ public class PickUpWeapon : XRGrabInteractable
         {
             args.interactorObject.transform.GetComponent<HandleGrabbing>().AttachObject(transform);
         }
-        if (args.interactorObject.transform.TryGetComponent(out Weapon weapon)) weapon.isEquipped = true;
+        LayerMask layerToIgnore = args.interactorObject.transform.gameObject.layer;
+        Physics.IgnoreLayerCollision(layerToIgnore, gameObject.layer, true);
+        GetComponent<Weapon>().isEquipped = true;
         base.OnSelectEntered(args);
         
     }
@@ -23,7 +25,9 @@ public class PickUpWeapon : XRGrabInteractable
         {
             args.interactorObject.transform.GetComponent<HandleGrabbing>().RemoveObject(transform);
         }
-        if (args.interactorObject.transform.TryGetComponent(out Weapon weapon)) weapon.isEquipped = false;
+        GetComponent<Weapon>().isEquipped = false;
+        LayerMask layerToIgnore = args.interactorObject.transform.gameObject.layer;
+        Physics.IgnoreLayerCollision(layerToIgnore, gameObject.layer, false);
         base.OnSelectExited(args);
     }
 
