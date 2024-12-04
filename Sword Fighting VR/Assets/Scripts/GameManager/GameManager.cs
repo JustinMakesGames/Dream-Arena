@@ -20,6 +20,7 @@ public struct EnemyCombination
 }
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     public static GameManager Instance;
     public int score;
     [HideInInspector] public int livingEnemyAmount;
@@ -35,6 +36,10 @@ public class GameManager : MonoBehaviour
     private Vector3 _finalSpawnPos;
     public List<GameObject> enemies;
 
+    [SerializeField] private GameObject loseCanvas;
+    [SerializeField] private GameObject winCanvas;
+    [SerializeField] private float canvasDistance;
+
     private void Awake()
     {
         if (Instance == null)
@@ -47,11 +52,21 @@ public class GameManager : MonoBehaviour
 
     public void EndBattle()
     {
-        GenerateNextRoom(); 
+        if (score >= maxRooms)
+        {
+            HandleWinning();
+        }
+
+        else
+        {
+            GenerateNextRoom();
+        }
+        
     }
 
     private void GenerateNextRoom()
     {
+        
         int randomRoom = UnityEngine.Random.Range(0, rooms.Count);
 
         GameObject newRoom = Instantiate(rooms[randomRoom], _finalSpawnPos, Quaternion.identity);
@@ -63,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle()
     {
-        OnTick.Instance.onTickEvent += CheckIfEnemiesAlife;
+        OnTick.Instance.onTickEvent += CheckIfEnemiesAlive;
     }
 
     public void SetEnemy(GameObject enemy)
@@ -76,7 +91,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<HandleBattling>().enabled = true;
     }
 
-    private void CheckIfEnemiesAlife()
+    private void CheckIfEnemiesAlive()
     {
         List<GameObject> deadEnemies = new List<GameObject>();
         for (int i = 0; i < enemies.Count; i++)
@@ -96,11 +111,28 @@ public class GameManager : MonoBehaviour
         {
 
             FindObjectOfType<HandleBattling>().HandleWinning();
-            OnTick.Instance.onTickEvent -= CheckIfEnemiesAlife;
+            OnTick.Instance.onTickEvent -= CheckIfEnemiesAlive;
         }
     }
 
+    public void HandleGameOver()
+    {
+        OnTick.Instance.onTickEvent -= CheckIfEnemiesAlive;
 
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        Instantiate(loseCanvas);
+        
+    }
+
+    public void HandleWinning()
+    {
+        OnTick.Instance.onTickEvent -= CheckIfEnemiesAlive;
+
+        Instantiate(winCanvas);
+    }
 
 
 

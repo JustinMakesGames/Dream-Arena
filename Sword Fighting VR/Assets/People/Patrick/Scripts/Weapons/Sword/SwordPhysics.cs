@@ -43,7 +43,7 @@ public class SwordPhysics : MonoBehaviour
             StartCoroutine(SlerpToPosition(_origin.position, _rb.position, 
                 (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude)); 
             StartCoroutine(SlerpToRotation(_origin.rotation, _rb.rotation, 
-                (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude)));
+                (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude));
             yield return new WaitForFixedUpdate();
             
         }

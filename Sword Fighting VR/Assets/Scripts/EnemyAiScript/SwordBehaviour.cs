@@ -25,15 +25,13 @@ public class SwordBehaviour : MonoBehaviour
 
     [SerializeField] private EnemyAI enemyAIScript;
 
+    private EnemyStats _enemyStats;
+
     private void Awake()
     {
         _originalYPosition = transform.position.y;
-        enemyAIScript = transform.parent.parent.parent.GetComponent<EnemyAI>();
-    }
-
-    private void Start()
-    {
-
+        enemyAIScript = transform.root.GetComponent<EnemyAI>();
+        _enemyStats = enemyAIScript.enemyStats;
     }
 
     public void StartAttacking()
@@ -72,7 +70,8 @@ public class SwordBehaviour : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            print("Touched player");
+            other.GetComponent<PlayerHealth>().TakeDamage(_enemyStats.damage);
+            print("Enemy did: " + _enemyStats.damage + " damage. The player has " + other.GetComponent<PlayerHealth>().health + " left.");
         }
     }
 
