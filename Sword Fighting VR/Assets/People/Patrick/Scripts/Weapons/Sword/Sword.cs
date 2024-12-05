@@ -1,4 +1,4 @@
-using System;
+  using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -10,9 +10,8 @@ public class Sword : Weapon
     private float _timeSinceLastDamage;
     private Vector3 _lastInputRot;
     private PhysicsHand _currentHand;
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
         baseDamage = weaponSo.damage;
         ignoresArmor = weaponSo.ignoresArmor;
     }

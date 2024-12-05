@@ -7,7 +7,7 @@ public class HandleGrabbing : MonoBehaviour
     public Transform handPosition;
     public Transform holdingThisObject;
 
-    private float distanceObject;
+    private float _distanceObject;
     [SerializeField] private float maxDistance;
     private void Update()
     {
@@ -31,11 +31,11 @@ public class HandleGrabbing : MonoBehaviour
 
         if (holdingThisObject != null)
         {
-            distanceObject = Vector3.Distance(holdingThisObject.position, transform.position);
+            _distanceObject = Vector3.Distance(holdingThisObject.position, transform.position);
         }
         
 
-        if  (distanceHand > maxDistance || holdingThisObject != null && distanceObject > maxDistance)
+        if  (distanceHand > maxDistance || holdingThisObject != null && _distanceObject > maxDistance)
         {
             handPosition.GetComponent<Rigidbody>().position = transform.position;
 

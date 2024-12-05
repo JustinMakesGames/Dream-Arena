@@ -17,13 +17,8 @@ public class Weapon : MonoBehaviour
     protected bool ignoresArmor;
     public bool IgnoresArmor() => ignoresArmor;
     protected int baseDamage;
-    public int GetDamage() => baseDamage;
     public bool isEquipped;
     
-    protected virtual void Start()
-    {
-        UpdateController();
-    }
     
     private void OnTransformParentChanged()
     {
@@ -37,10 +32,28 @@ public class Weapon : MonoBehaviour
         inputActionRotation = controller.rotationAction;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        print("Collision detected with: " + other.gameObject.name);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(500);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Trigger collision detected with: " + other.gameObject.name);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyHealth>().TakeDamage(500);
+        }
+    }
+
     public virtual int GetDamage(Collider collision)
     {
         return weaponSo.damage;
     }
-
+    
     
 }

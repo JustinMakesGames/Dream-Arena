@@ -17,14 +17,16 @@ public class SwordPhysics : MonoBehaviour
     private Rigidbody _rb;
     private Transform _origin;
     private List<Coroutine> _currentlyActiveCoroutines = new();
+    private Weapon _weapon;
 
-    private void Start()
+    private void Start() 
     {
         StartCoroutine(PhysicsHandling());
     }
     private void OnTransformParentChanged()
     {
-        if (!GetComponent<Weapon>().isEquipped) return;
+        _weapon = GetComponent<Weapon>();
+        if (!_weapon.isEquipped) return;
         _rbHand = GetComponentInParent<PhysicsHand>();
         _rb = _rbHand.GetComponent<Rigidbody>();
         _controller = _rbHand.target.GetComponent<ActionBasedController>();
@@ -37,6 +39,7 @@ public class SwordPhysics : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitUntil(() => _weapon.isEquipped);
             _origin = _rb.transform;
             yield return new WaitUntil(() => _origin.position != _rb.position);
             

@@ -12,8 +12,8 @@ public struct EnemyCombination
     public int maxScoreCost;
     public enum EnemyOrder
     {
-        Order,
-        Random
+        ORDER,
+        RANDOM
     }
 
     public EnemyOrder orderState;
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         else
         {
+            score++;
             GenerateNextRoom();
         }
         

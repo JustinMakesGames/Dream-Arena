@@ -12,7 +12,7 @@ public class EnemyShieldBehaviour : MonoBehaviour
     [SerializeField] private GameObject positionPrefabEmpty;
     [SerializeField] private float rotationSpeed;
     private List<Transform> _positionsForShield = new List<Transform>();
-    private bool shieldHit;
+    private bool _shieldHit;
 
     public Transform leftArm;
 

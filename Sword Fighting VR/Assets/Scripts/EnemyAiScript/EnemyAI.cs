@@ -14,8 +14,8 @@ public class EnemyAI : MonoBehaviour
     private Vector3 _endDestination;
     private NavMeshAgent _agent;
     private Vector3 _originalPosition;
-    private bool hasFound;
-    private bool hasMoved;
+    private bool _hasFound;
+    private bool _hasMoved;
 
     [Header("Player Spotted")]
     private Transform _player;
@@ -126,10 +126,10 @@ public class EnemyAI : MonoBehaviour
 
     private void SearchForNewPosition()
     {
-        if (Vector3.Distance(transform.position, _endDestination) < 0.5f && !hasMoved)
+        if (Vector3.Distance(transform.position, _endDestination) < 0.5f && !_hasMoved)
         {
             _endDestination = GetPosition();
-            hasMoved = true;
+            _hasMoved = true;
             StartCoroutine(WaitForNewPosition());
         }   
     }
@@ -138,7 +138,7 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(intervalTime);
         _agent.SetDestination(_endDestination);
-        hasMoved = false;
+        _hasMoved = false;
     }
     private Vector3 GetPosition()
     {

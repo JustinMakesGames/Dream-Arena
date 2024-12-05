@@ -8,7 +8,7 @@ public class WeaponManager : MonoBehaviour
 
 
     [SerializeField] private Weapon originalWeapon;
-    private Weapon holdingThisWeaponScript;
+    private Weapon _weaponScript;
 
     private void Start()
     {
@@ -18,9 +18,9 @@ public class WeaponManager : MonoBehaviour
     
     public void SwitchWeapon(Weapon weaponScript)
     {
-        this.holdingThisWeaponScript.enabled = false;
-        this.holdingThisWeaponScript = weaponScript;
-        holdingThisWeaponScript.enabled = true;
+        this._weaponScript.isEquipped = false;
+        this._weaponScript = weaponScript;
+        _weaponScript.isEquipped = true;
 
         print("Switched");
         
@@ -28,13 +28,13 @@ public class WeaponManager : MonoBehaviour
 
     public void DetachWeapon()
     {
-        if (holdingThisWeaponScript != null)
+        if (_weaponScript != null)
         {
-            holdingThisWeaponScript.enabled = false;
+            _weaponScript.isEquipped = false;
         }
         
-        this.holdingThisWeaponScript = originalWeapon;
-        holdingThisWeaponScript.enabled = true;
+        this._weaponScript = originalWeapon;
+        _weaponScript.isEquipped = true;
 
         print("Detached");
     }

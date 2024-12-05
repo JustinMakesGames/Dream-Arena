@@ -12,8 +12,8 @@ public class RoomHandler : MonoBehaviour
     public Transform enemyPositionFolder;
     public int enemyAmount;
 
-    private int randomEnemyGroup;
-    private List<Transform> enemyPositions = new List<Transform>();
+    private int _randomEnemyGroup;
+    private List<Transform> _enemyPositions = new List<Transform>();
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class RoomHandler : MonoBehaviour
     {
         for (int i = 0; i < enemyPositionFolder.childCount; i++)
         {
-            enemyPositions.Add(enemyPositionFolder.GetChild(i));
+            _enemyPositions.Add(enemyPositionFolder.GetChild(i));
         }
     }
 
@@ -45,20 +45,20 @@ public class RoomHandler : MonoBehaviour
                 possibleEnemyCombinations.Add(comb);
             }
         }
-        randomEnemyGroup = Random.Range(0, possibleEnemyCombinations.Count);
-        _chosenEnemyGroup = possibleEnemyCombinations[randomEnemyGroup];
+        _randomEnemyGroup = Random.Range(0, possibleEnemyCombinations.Count);
+        _chosenEnemyGroup = possibleEnemyCombinations[_randomEnemyGroup];
     }
 
     private void SpawningEnemies()
     {
-        if (_chosenEnemyGroup.orderState == EnemyCombination.EnemyOrder.Random)
+        if (_chosenEnemyGroup.orderState == EnemyCombination.EnemyOrder.RANDOM)
         {
             for (int i = 0; i < enemyAmount; i++)
             {
                 int randomEnemy = Random.Range(0, _chosenEnemyGroup.possibleEnemies.Count);
-                int randomPosition = Random.Range(0, enemyPositions.Count);
+                int randomPosition = Random.Range(0, _enemyPositions.Count);
 
-                GameObject enemy = Instantiate(_chosenEnemyGroup.possibleEnemies[randomEnemy], enemyPositions[randomPosition].position, Quaternion.identity);
+                GameObject enemy = Instantiate(_chosenEnemyGroup.possibleEnemies[randomEnemy], _enemyPositions[randomPosition].position, Quaternion.identity);
                 GameManager.Instance.SetEnemy(enemy);
             }
         }

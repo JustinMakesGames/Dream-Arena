@@ -8,8 +8,8 @@ public class HandleBattling : MonoBehaviour
     [SerializeField] private GameObject outDoor;
 
     [SerializeField] private Transform wallFolder;
-    private List<Transform> walls = new List<Transform>();
-    private Bounds bounds;
+    private List<Transform> _walls = new List<Transform>();
+    private Bounds _bounds;
 
     
     public void HandleSpawningDoor()
@@ -26,28 +26,28 @@ public class HandleBattling : MonoBehaviour
     {
         for (int i = 0; i < wallFolder.childCount; i++)
         {
-            walls.Add(wallFolder.GetChild(i));
+            _walls.Add(wallFolder.GetChild(i));
         }
-        int randomWall = Random.Range(0, walls.Count);
+        int randomWall = Random.Range(0, _walls.Count);
 
-        bounds = walls[randomWall].GetComponent<Collider>().bounds;
+        _bounds = _walls[randomWall].GetComponent<Collider>().bounds;
         Vector3 randomPos = SearchRandomDoorPosition(randomWall);
 
-        GameObject cloneDoor = Instantiate(door, Vector3.zero, walls[randomWall].rotation, transform);
+        GameObject cloneDoor = Instantiate(door, Vector3.zero, _walls[randomWall].rotation, transform);
         cloneDoor.transform.position = randomPos;
-        cloneDoor.transform.parent = walls[randomWall];
+        cloneDoor.transform.parent = _walls[randomWall];
     }
 
     private Vector3 SearchRandomDoorPosition(int index)
     {
-        Vector3 minLocal = walls[index].InverseTransformPoint(bounds.min);
-        Vector3 maxLocal = walls[index].InverseTransformPoint(bounds.max);
+        Vector3 minLocal = _walls[index].InverseTransformPoint(_bounds.min);
+        Vector3 maxLocal = _walls[index].InverseTransformPoint(_bounds.max);
         Vector3 localPos = new Vector3(
             Random.Range(minLocal.x, maxLocal.x),
             minLocal.y,
            transform.forward.z * 0.5f);
 
-        Vector3 newPos = walls[index].TransformPoint(localPos);
+        Vector3 newPos = _walls[index].TransformPoint(localPos);
 
         return newPos;
     }
