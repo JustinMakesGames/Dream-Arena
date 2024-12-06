@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: rig.004|Attack
-      takeName: rig.004|Attack
-      internalID: -6837053844955802641
+      name: rig.002|Running (1)
+      takeName: rig.002|Running
+      internalID: -3690494364503127627
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -62,11 +62,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: rig.004|Run
-      takeName: rig.004|Run
-      internalID: 9039307101859341336
+      name: rig.002|Running
+      takeName: rig.002|Running
+      internalID: -6014391892500932450
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -74,35 +74,6 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: rig.004|Running
-      takeName: rig.004|Running
-      internalID: 4655645554175913395
-      firstFrame: 0
-      lastFrame: 25
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

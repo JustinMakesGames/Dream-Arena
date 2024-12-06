@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &64440726
+--- !u!1001 &76907185
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -134,17 +134,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c4148c8b5d33a204ab4394d9cb91432d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.384
+      value: 2.0039306
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4148c8b5d33a204ab4394d9cb91432d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.752
+      value: 19.753431
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4148c8b5d33a204ab4394d9cb91432d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -57.828
+      value: -57.40771
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c4148c8b5d33a204ab4394d9cb91432d,
         type: 3}
@@ -193,22 +193,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c4148c8b5d33a204ab4394d9cb91432d,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 64440728}
+      addedObject: {fileID: 76907187}
   m_SourcePrefab: {fileID: 100100000, guid: c4148c8b5d33a204ab4394d9cb91432d, type: 3}
---- !u!1 &64440727 stripped
+--- !u!1 &76907186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c4148c8b5d33a204ab4394d9cb91432d,
     type: 3}
-  m_PrefabInstance: {fileID: 64440726}
+  m_PrefabInstance: {fileID: 76907185}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &64440728
+--- !u!95 &76907187
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64440727}
+  m_GameObject: {fileID: 76907186}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: af486f4d9175f074d8d75fa7a8fa3312, type: 2}
@@ -846,4 +846,4 @@ SceneRoots:
   - {fileID: 533041006}
   - {fileID: 1991774072}
   - {fileID: 1118357914}
-  - {fileID: 64440726}
+  - {fileID: 76907185}
