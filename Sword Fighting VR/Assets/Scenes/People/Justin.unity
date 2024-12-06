@@ -1074,7 +1074,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  ignoreRaycast: 1
 --- !u!1001 &674477193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1413,6 +1412,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1919021005}
+    - targetCorrespondingSourceObject: {fileID: 8801463381028693206, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1919021009}
     - targetCorrespondingSourceObject: {fileID: 3405979563711277130, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
       insertIndex: -1
@@ -1421,6 +1424,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1032972700}
+    - targetCorrespondingSourceObject: {fileID: 3405979563711277130, guid: c86c7de9c7b20c34d9f66f7d954d4647,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1032972704}
   m_SourcePrefab: {fileID: 100100000, guid: c86c7de9c7b20c34d9f66f7d954d4647, type: 3}
 --- !u!1 &697862371
 GameObject:
@@ -1593,7 +1600,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1929,9 +1936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActionPosition:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Input Action Position
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 7761ecd6-8565-4f6b-847a-ff728356ab08
@@ -1939,11 +1946,12 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -3326005586356538449, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
   inputActionRotation:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Input Action Rotation
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 5f04f43b-51fc-42ef-b9d0-1286336645e9
@@ -1954,7 +1962,29 @@ MonoBehaviour:
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
   weaponSo: {fileID: 11400000, guid: 83e15dcc7bb9d644c8563c73686c07d5, type: 2}
-  isEquipped: 0
+  isEquipped: 1
+  hand: {fileID: 0}
+--- !u!135 &1032972704
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032972686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.08
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1037229917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2047,6 +2077,16 @@ PrefabInstance:
         type: 3}
       propertyPath: isEquipped
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319255955408436217, guid: a829464a9676504429e93a10e4e1e6af,
+        type: 3}
+      propertyPath: inputActionPosition.m_Action.m_Name
+      value: Input Action Position
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319255955408436217, guid: a829464a9676504429e93a10e4e1e6af,
+        type: 3}
+      propertyPath: inputActionRotation.m_Action.m_Name
+      value: Input Action Rotation
       objectReference: {fileID: 0}
     - target: {fileID: 8848858926026170652, guid: a829464a9676504429e93a10e4e1e6af,
         type: 3}
@@ -3846,9 +3886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActionPosition:
-    m_UseReference: 0
+    m_UseReference: 1
     m_Action:
-      m_Name: 
+      m_Name: Input Action Position
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 34e3568e-1834-4d14-973e-7f66aa78ec39
@@ -3856,11 +3896,12 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 0}
+    m_Reference: {fileID: -2024308242397127297, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
   inputActionRotation:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Input Action Rotation
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: cf2fe656-e139-4ff3-86b0-6440167ca3f5
@@ -3871,7 +3912,29 @@ MonoBehaviour:
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
   weaponSo: {fileID: 11400000, guid: 83e15dcc7bb9d644c8563c73686c07d5, type: 2}
-  isEquipped: 0
+  isEquipped: 1
+  hand: {fileID: 0}
+--- !u!135 &1919021009
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919020987}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.08
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1923945973
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,6 +36,10 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody _rb;
 
     public EnemyStats enemyStats;
+
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float knockbackDuration;
+
     public enum EnemyBehaviourStates
     {
         Idle,
@@ -265,6 +269,28 @@ public class EnemyAI : MonoBehaviour
     private void OnDestroy()
     {
         OnTick.Instance.onTickEvent -= MoveToThePlayer;
+    }
+
+    public void JumpFromDamage()
+    {
+        _agent.enabled = false;
+        Vector3 direction = (transform.position - _player.position).normalized;
+        direction.y = jumpForce;
+        print("jumped");
+        _rb.isKinematic = false;
+        _rb.AddForce(direction * knockbackForce, ForceMode.VelocityChange);
+        print(direction * knockbackForce);
+
+        Invoke(nameof(ResetKnockback), knockbackDuration);
+
+        
+    }
+
+    private void ResetKnockback()
+    {
+        _rb.velocity = Vector3.zero;
+        _agent.enabled = true;
+        _rb.isKinematic = true;
     }
 
 }

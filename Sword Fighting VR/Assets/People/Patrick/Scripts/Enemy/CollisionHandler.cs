@@ -19,7 +19,11 @@ public class CollisionHandler : MonoBehaviour
             {
                 _damage = weapon.GetDamage(other);
                 bool ignoresArmor = weapon.IgnoresArmor();
-                // if (_damage == 0) return;
+                if (_damage == 0)
+                {
+                    print("NO DAMAGE NOOB AHAHAHA");
+                    return;
+                }
                 transform.root.GetComponent<EnemyHealth>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage, ignoresArmor);
                 StartCoroutine(ChangeColor());
             }

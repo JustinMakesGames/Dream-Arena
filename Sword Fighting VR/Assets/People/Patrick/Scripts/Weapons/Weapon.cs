@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [DisallowMultipleComponent]
@@ -8,23 +11,65 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Weapon : MonoBehaviour
 {
-    [HideInInspector] public InputActionProperty inputActionPosition;
-    [HideInInspector] public InputActionProperty inputActionRotation;
-    [HideInInspector] public ActionBasedController controller;
+    public InputActionProperty inputActionPosition;
+    public InputActionProperty inputActionRotation;
+    public ActionBasedController controller;
     public WeaponSO weaponSo;
     //Make sure these variables can only be accessed from classes which derive from this one,
     //while still making sure other scripts can get the values.
     protected bool ignoresArmor;
     public bool IgnoresArmor() => ignoresArmor;
     protected int baseDamage;
+    public int GetDamage() => baseDamage;
     public bool isEquipped;
+
+    [SerializeField] private Transform hand;
+    private UnityEngine.XR.InputDevice _controller;
+
+    private Vector3 previousPosition;
+    private Vector3 velocity;
+
+    private float time;
+    private bool isHit;
     
-    
+    protected virtual void Start()
+    {
+        _controller = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        UpdateController();
+    }
+
+    protected virtual void Update()
+    {
+        CalculatingHandVelocity();
+        HittingTimePunishment();
+        
+    }
+
+    private void CalculatingHandVelocity()
+    {
+        Vector3 currentPosition = inputActionPosition.action.ReadValue<Vector3>();
+        velocity = (currentPosition - previousPosition) / Time.deltaTime;
+        previousPosition = currentPosition;
+    }
+
+    private void HittingTimePunishment()
+    {
+        if (isHit)
+        {
+            time += Time.deltaTime;
+
+            if (time > weaponSo.timePunishment)
+            {
+                isHit = false;
+                time = 0;
+            }
+        }
+    }
     private void OnTransformParentChanged()
     {
         UpdateController();
     }
-    
+
     private void UpdateController()
     {
         controller = transform.GetComponent<PhysicsHand>().target.GetComponent<ActionBasedController>();
@@ -32,28 +77,18 @@ public class Weapon : MonoBehaviour
         inputActionRotation = controller.rotationAction;
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        print("Collision detected with: " + other.gameObject.name);
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(500);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Trigger collision detected with: " + other.gameObject.name);
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.GetComponent<EnemyHealth>().TakeDamage(500);
-        }
-    }
-
     public virtual int GetDamage(Collider collision)
     {
-        return weaponSo.damage;
+        if (isHit) return 0;
+        isHit = true;
+        print("Tries damage");
+        if (velocity.magnitude > 1)
+        {
+            return weaponSo.damage;
+        }
+        print("no damage");
+        return 0;
     }
-    
+
     
 }

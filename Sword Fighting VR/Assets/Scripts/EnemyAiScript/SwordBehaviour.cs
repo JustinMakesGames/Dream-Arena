@@ -70,7 +70,7 @@ public class SwordBehaviour : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(_enemyStats.damage);
+            other.GetComponent<PlayerHealth>().TakeDamage(0);
             print("Enemy did: " + _enemyStats.damage + " damage. The player has " + other.GetComponent<PlayerHealth>().health + " left.");
         }
     }

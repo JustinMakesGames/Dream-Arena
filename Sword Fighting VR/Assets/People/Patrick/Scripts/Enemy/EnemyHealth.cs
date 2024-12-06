@@ -43,6 +43,8 @@ public class EnemyHealth : MonoBehaviour
     {
         _health -= damage;
         print("Damage taken: " + damage);
+
+        GetComponent<EnemyAI>().JumpFromDamage();
         if (_health <= 0)
         {
             Destroy(gameObject);
