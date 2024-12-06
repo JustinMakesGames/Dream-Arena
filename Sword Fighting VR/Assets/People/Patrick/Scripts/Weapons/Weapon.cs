@@ -29,8 +29,8 @@ public class Weapon : MonoBehaviour
     private Vector3 previousPosition;
     private Vector3 velocity;
 
-    private float time;
-    private bool isHit;
+    private float _time;
+    private bool _isHit;
     
     protected virtual void Start()
     {
@@ -49,19 +49,20 @@ public class Weapon : MonoBehaviour
     {
         Vector3 currentPosition = inputActionPosition.action.ReadValue<Vector3>();
         velocity = (currentPosition - previousPosition) / Time.deltaTime;
+        
         previousPosition = currentPosition;
     }
 
     private void HittingTimePunishment()
     {
-        if (isHit)
+        if (_isHit)
         {
-            time += Time.deltaTime;
+            _time += Time.deltaTime;
 
-            if (time > weaponSo.timePunishment)
+            if (_time > weaponSo.timePunishment)
             {
-                isHit = false;
-                time = 0;
+                _isHit = false;
+                _time = 0;
             }
         }
     }
@@ -79,15 +80,37 @@ public class Weapon : MonoBehaviour
 
     public virtual int GetDamage(Collider collision)
     {
-        if (isHit) return 0;
-        isHit = true;
-        print("Tries damage");
+        if (_isHit) return 0;
+        _isHit = true;
         if (velocity.magnitude > 1)
         {
-            return weaponSo.damage;
+            int damage = CalculateDamage(velocity.magnitude, weaponSo.damage);
+            return damage;
         }
         print("no damage");
         return 0;
+    }
+
+    private int CalculateDamage(float velocityMagnitude, int baseDamage)
+    {
+        int multiplier = 0;
+        switch (velocityMagnitude)
+        {
+            case <= 3:
+                multiplier = 1;
+                break;
+            case <= 5:
+                multiplier = 2;
+                break;
+            case > 5:
+                multiplier = 3;
+                break;
+        }
+
+        print("VelocityMagnitude: " + velocity.magnitude);
+        int damage = baseDamage * multiplier;
+
+        return damage;
     }
 
     

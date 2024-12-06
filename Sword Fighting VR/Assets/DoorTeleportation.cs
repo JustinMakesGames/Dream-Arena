@@ -16,6 +16,7 @@ public class DoorTeleportation : MonoBehaviour
         {
             print("Touched door");
             other.transform.position = outDoor.position + outDoor.forward;
+            other.transform.rotation = outDoor.rotation;
             Destroy(outDoor.gameObject);
             Destroy(transform.root.gameObject);
         }

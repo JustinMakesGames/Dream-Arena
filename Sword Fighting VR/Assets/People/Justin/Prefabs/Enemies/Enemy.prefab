@@ -448,6 +448,7 @@ MonoBehaviour:
   enemyStats: {fileID: 11400000, guid: fd36c6d67b3dab94ebf830e8a15b142e, type: 2}
   jumpForce: 1
   knockbackDuration: 0.5
+  item: {fileID: 4383553249133825269, guid: a829464a9676504429e93a10e4e1e6af, type: 3}
 --- !u!195 &5825463672997258872
 NavMeshAgent:
   m_ObjectHideFlags: 0

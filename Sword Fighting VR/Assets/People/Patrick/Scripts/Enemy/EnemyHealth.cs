@@ -47,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<EnemyAI>().JumpFromDamage();
         if (_health <= 0)
         {
+            GetComponent<EnemyAI>().ChanceToSpawnItems();
             Destroy(gameObject);
         }
     }

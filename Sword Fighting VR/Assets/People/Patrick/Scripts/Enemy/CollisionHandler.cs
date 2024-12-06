@@ -21,7 +21,6 @@ public class CollisionHandler : MonoBehaviour
                 bool ignoresArmor = weapon.IgnoresArmor();
                 if (_damage == 0)
                 {
-                    print("NO DAMAGE NOOB AHAHAHA");
                     return;
                 }
                 transform.root.GetComponent<EnemyHealth>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage, ignoresArmor);

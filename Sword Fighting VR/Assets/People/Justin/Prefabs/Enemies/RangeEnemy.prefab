@@ -360,12 +360,12 @@ GameObject:
   - component: {fileID: 8525207433902416660}
   - component: {fileID: 8072908330550028379}
   - component: {fileID: 5227314245995540954}
-  - component: {fileID: 5512555304634963244}
   - component: {fileID: 5825463672997258872}
   - component: {fileID: 6379126281919517831}
   - component: {fileID: 4197459641986186264}
   - component: {fileID: 5104150817736228241}
   - component: {fileID: 8629453607518761010}
+  - component: {fileID: 6621592072892297445}
   m_Layer: 0
   m_Name: RangeEnemy
   m_TagString: Enemy
@@ -468,29 +468,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &5512555304634963244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6761751038751904162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc198943373bbb4394941f9c4b7d202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 10
-  enemyState: 0
-  intervalTime: 2
-  enemyPositionOffset: 3
-  lookRange: 5
-  playerRange: 5
-  plusOffset: 3
-  changeAngle: 0
-  isAttacking: 0
-  knockbackForce: 10
-  enemyStats: {fileID: 11400000, guid: fd36c6d67b3dab94ebf830e8a15b142e, type: 2}
 --- !u!195 &5825463672997258872
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -591,6 +568,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: fd36c6d67b3dab94ebf830e8a15b142e, type: 2}
+--- !u!114 &6621592072892297445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761751038751904162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffea5328d195b254e862ffc2f77f9c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  enemyState: 0
+  intervalTime: 2
+  enemyPositionOffset: 3
+  lookRange: 5
+  playerRange: 5
+  plusOffset: 3
+  changeAngle: 0
+  isAttacking: 0
+  knockbackForce: 10
+  enemyStats: {fileID: 11400000, guid: fd36c6d67b3dab94ebf830e8a15b142e, type: 2}
+  jumpForce: 1
+  knockbackDuration: 3
+  item: {fileID: 4383553249133825269, guid: a829464a9676504429e93a10e4e1e6af, type: 3}
 --- !u!1 &6799033092922251653
 GameObject:
   m_ObjectHideFlags: 0

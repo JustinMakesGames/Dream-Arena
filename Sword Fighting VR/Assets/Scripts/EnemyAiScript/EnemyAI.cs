@@ -8,37 +8,40 @@ public class EnemyAI : MonoBehaviour
 {
     [Header("Idle Variables")]
 
-    [SerializeField] private float range;
+    [SerializeField] protected float range;
     public EnemyBehaviourStates enemyState;
-    [SerializeField] private float intervalTime;
-    private Vector3 _endDestination;
-    private NavMeshAgent _agent;
-    private Vector3 _originalPosition;
-    private bool _hasFound;
-    private bool _hasMoved;
+    [SerializeField] protected float intervalTime;
+    protected Vector3 _endDestination;
+    protected NavMeshAgent _agent;
+    protected Vector3 _originalPosition;
+    protected bool _hasFound;
+    protected bool _hasMoved;
 
     [Header("Player Spotted")]
-    private Transform _player;
-    [SerializeField] private float enemyPositionOffset;
-    [SerializeField] private float lookRange;
+    protected Transform _player;
+    [SerializeField] protected float enemyPositionOffset;
+    [SerializeField] protected float lookRange;
 
-    [SerializeField] private float playerRange;
+    [SerializeField] protected float playerRange;
 
     [Header("Player Attacking")]
-    [SerializeField] private float plusOffset;
-    private Vector3 _newAttackDestination;
-    private SwordBehaviour _swordBehaviourScript;
+    [SerializeField] protected float plusOffset;
+    protected Vector3 _newAttackDestination;
+    protected SwordBehaviour _swordBehaviourScript;
     public float changeAngle;
     public bool isAttacking;
 
     [Header("Knockback")]
-    [SerializeField] private float knockbackForce;
-    private Rigidbody _rb;
+    [SerializeField] protected float knockbackForce;
+    protected Rigidbody _rb;
 
     public EnemyStats enemyStats;
 
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float knockbackDuration;
+    [SerializeField] protected float jumpForce;
+    [SerializeField] protected float knockbackDuration;
+
+    [Header("DeathSpawning")]
+    [SerializeField] protected GameObject item;
 
     public enum EnemyBehaviourStates
     {
@@ -47,7 +50,7 @@ public class EnemyAI : MonoBehaviour
         PlayerAttack
     }
 
-    private void Awake()
+    protected void Awake()
     {
         
         _agent = GetComponent<NavMeshAgent>();
@@ -56,13 +59,13 @@ public class EnemyAI : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    protected void Start()
     {
         _player = PlayerReferenceScript.Instance.transform;
         SwitchOnce();
     }
 
-    private void Update()
+    protected void Update()
     {
         CheckForAttackDistance();
         switch (enemyState)
@@ -79,7 +82,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void SwitchOnce()
+    protected void SwitchOnce()
     {
         _agent.speed = 5f;
         switch (enemyState)
@@ -101,25 +104,25 @@ public class EnemyAI : MonoBehaviour
 
     #region Idle
 
-    private void StartPreparingIdle()
+    protected virtual void StartPreparingIdle()
     {
         UnsubscribeFromOnTick();
         _endDestination = GetPosition();
         _agent.SetDestination(_endDestination);
     }
 
-    private void UnsubscribeFromOnTick()
+    protected void UnsubscribeFromOnTick()
     {
         OnTick.Instance.onTickEvent -= MoveToThePlayer;
             
     }
-    private void HandlingIdle()
+    protected virtual void HandlingIdle()
     {
         SearchForNewPosition();
         CheckForPlayer();
     }
 
-    private void CheckForPlayer()
+    protected void CheckForPlayer()
     {
         if (Vector3.Distance(_player.position, transform.position) < lookRange)
         {
@@ -128,7 +131,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void SearchForNewPosition()
+    protected void SearchForNewPosition()
     {
         if (Vector3.Distance(transform.position, _endDestination) < 0.5f && !_hasMoved)
         {
@@ -138,13 +141,13 @@ public class EnemyAI : MonoBehaviour
         }   
     }
 
-    private IEnumerator WaitForNewPosition()
+    protected IEnumerator WaitForNewPosition()
     {
         yield return new WaitForSeconds(intervalTime);
         _agent.SetDestination(_endDestination);
         _hasMoved = false;
     }
-    private Vector3 GetPosition()
+    protected Vector3 GetPosition()
     {
         Vector3 randomPos = new Vector3(
             Random.Range(_originalPosition.x - range, _originalPosition.x + range),
@@ -157,12 +160,12 @@ public class EnemyAI : MonoBehaviour
 
     #region PlayerSpotted
 
-    private void StartPlayerSpotted()
+    protected void StartPlayerSpotted()
     {
         OnTick.Instance.onTickEvent += MoveToThePlayer;
     }
 
-    private void MoveToThePlayer()
+    protected void MoveToThePlayer()
     {
         Vector3 targetPosition = CalculateTargetPosition();
         _agent.SetDestination(targetPosition);
@@ -174,7 +177,7 @@ public class EnemyAI : MonoBehaviour
         } 
     }
 
-    private Vector3 CalculateTargetPosition()
+    protected Vector3 CalculateTargetPosition()
     {
         Vector3 directionToPlayer = _player.position - transform.position;
         directionToPlayer.Normalize();
@@ -186,7 +189,7 @@ public class EnemyAI : MonoBehaviour
 
     #region PlayerAttack
 
-    private void StartPreparingAttack()
+    protected virtual void StartPreparingAttack()
     {
         NavMeshAgentStatsChange();
         
@@ -196,7 +199,7 @@ public class EnemyAI : MonoBehaviour
         UnsubscribeFromOnTick();
     }
 
-    private void NavMeshAgentStatsChange()
+    protected void NavMeshAgentStatsChange()
     {
         _agent.updateRotation = false;
         _agent.speed = 2;
@@ -209,7 +212,7 @@ public class EnemyAI : MonoBehaviour
         CheckIfPlayerIsGone();
     }
 
-    private void MoveAroundPlayer()
+    protected void MoveAroundPlayer()
     {
         transform.LookAt(new Vector3(_player.position.x, transform.position.y, _player.position.z));
         if (Vector3.Distance(transform.position, _newAttackDestination) == 0)
@@ -219,7 +222,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void CheckIfPlayerIsGone()
+    protected void CheckIfPlayerIsGone()
     {
         if (Vector3.Distance(_player.position, transform.position) > playerRange)
         {
@@ -230,7 +233,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private float CalculateFirstPosition()
+    protected float CalculateFirstPosition()
     {
         Vector3 direction = (transform.position - _player.position).normalized;
 
@@ -240,7 +243,7 @@ public class EnemyAI : MonoBehaviour
         return angleFromPlayer;
     }
 
-    private Vector3 CalculatePositionToGo()
+    protected Vector3 CalculatePositionToGo()
     {
         changeAngle += Random.Range(-20, 20);
         float radians = changeAngle * Mathf.Deg2Rad;
@@ -248,7 +251,7 @@ public class EnemyAI : MonoBehaviour
         return offset;
     }
 
-    private void CheckForAttackDistance()
+    protected void CheckForAttackDistance()
     {
         if (Vector3.Distance(transform.position, _player.position) < playerRange && !isAttacking)
         {
@@ -265,10 +268,9 @@ public class EnemyAI : MonoBehaviour
 
 
     #endregion
-
-    private void OnDestroy()
+    protected void OnDestroy()
     {
-        OnTick.Instance.onTickEvent -= MoveToThePlayer;
+        OnTick.Instance.onTickEvent -= MoveToThePlayer;    
     }
 
     public void JumpFromDamage()
@@ -286,11 +288,16 @@ public class EnemyAI : MonoBehaviour
         
     }
 
-    private void ResetKnockback()
+    protected void ResetKnockback()
     {
         _rb.velocity = Vector3.zero;
         _agent.enabled = true;
         _rb.isKinematic = true;
+    }
+
+    public void ChanceToSpawnItems()
+    {
+        Instantiate(item, transform.position, Quaternion.identity);
     }
 
 }
