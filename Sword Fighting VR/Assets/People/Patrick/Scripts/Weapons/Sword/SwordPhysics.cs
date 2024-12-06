@@ -35,11 +35,14 @@ public class SwordPhysics : MonoBehaviour
         
     }
 
-    IEnumerator PhysicsHandling()
+    private IEnumerator PhysicsHandling()
     {
         while (true)
         {
-            yield return new WaitUntil(() => _weapon.isEquipped);
+            if (!_weapon.isEquipped)
+            {
+                yield return new WaitUntil(() => _weapon.isEquipped);
+            }
             _origin = _rb.transform;
             yield return new WaitUntil(() => _origin.position != _rb.position);
             
@@ -51,7 +54,7 @@ public class SwordPhysics : MonoBehaviour
             
         }
     }
-    IEnumerator SlerpToPosition(Vector3 from, Vector3 to, float t)
+    private IEnumerator SlerpToPosition(Vector3 from, Vector3 to, float t)
     {
         while (transform.position != to)
         {
@@ -59,7 +62,7 @@ public class SwordPhysics : MonoBehaviour
             yield return null;
         }
     }
-    IEnumerator SlerpToRotation(Quaternion from, Quaternion to, float t)
+    private IEnumerator SlerpToRotation(Quaternion from, Quaternion to, float t)
     {
         while (transform.rotation != to)
         {

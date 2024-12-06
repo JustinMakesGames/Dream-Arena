@@ -2,12 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-[RequireComponent(typeof(Collider))]
 public class GrabInteractable : XRGrabInteractable
 {
     private Collider _collider;
     private LayerMask _layerMask;
-    private XRBaseInteractor _interactor;
     private void Start()
     {
         _collider = GetComponent<Collider>();
@@ -17,9 +15,8 @@ public class GrabInteractable : XRGrabInteractable
     protected override void Grab()
     {
         base.Grab();
-        Physics.IgnoreLayerCollision(GetLayerMask(), gameObject.layer);
+        Physics.IgnoreLayerCollision(gameObject.layer, GetLayerMask(), true);
     }
-
     private LayerMask GetLayerMask()
     {
         var grabInteractable = GetComponent<XRGrabInteractable>();
