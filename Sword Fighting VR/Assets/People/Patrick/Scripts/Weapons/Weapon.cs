@@ -35,7 +35,6 @@ public class Weapon : MonoBehaviour
     protected virtual void Start()
     {
         _controller = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        UpdateController();
     }
 
     protected virtual void Update()
@@ -66,14 +65,10 @@ public class Weapon : MonoBehaviour
             }
         }
     }
-    private void OnTransformParentChanged()
-    {
-        UpdateController();
-    }
 
-    private void UpdateController()
+    public void UpdateController(Transform selectedHand)
     {
-        controller = transform.GetComponent<PhysicsHand>().target.GetComponent<ActionBasedController>();
+        controller = selectedHand.GetComponent<PhysicsHand>().target.GetComponent<ActionBasedController>();
         inputActionPosition = controller.positionAction;
         inputActionRotation = controller.rotationAction;
     }

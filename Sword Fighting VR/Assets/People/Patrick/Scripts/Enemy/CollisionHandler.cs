@@ -13,10 +13,11 @@ public class CollisionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            print("Collision detected");
+            print("Collision detected" + other.transform.name);
             Weapon weapon = other.gameObject.GetComponent<Weapon>();
             if (weapon.isEquipped)
             {
+                print("DAMAGE BY " + other.transform.name);
                 _damage = weapon.GetDamage(other);
                 bool ignoresArmor = weapon.IgnoresArmor();
                 if (_damage == 0)

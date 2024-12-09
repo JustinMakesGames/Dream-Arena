@@ -10,13 +10,13 @@ public class Sword : Weapon
     private float _timeSinceLastDamage;
     private Vector3 _lastInputRot;
     private PhysicsHand _currentHand;
-    private void Start()
+    protected override void Start()
     {
         baseDamage = weaponSo.damage;
         ignoresArmor = weaponSo.ignoresArmor;
     }
 
-    private void Update()
+    protected override void Update()
     {
         _timeSinceLastDamage += Time.deltaTime;
     }
@@ -25,7 +25,7 @@ public class Sword : Weapon
 
     #region Damage Handler
 
-    public override int GetDamage(Collider collision)
+    /*public override int GetDamage(Collider collision)
     {
         //Checks to make sure player has moved his sword at all since last attack.
         Vector3 rot = inputActionRotation.action.ReadValue<Quaternion>().eulerAngles.normalized;
@@ -42,7 +42,7 @@ public class Sword : Weapon
         _timeSinceLastDamage = 0;
         print(damage);
         return damage;
-    }
+    }*/
     #endregion
 
     #region Punishments

@@ -16,17 +16,18 @@ public class PickUpWeapon : XRGrabInteractable
         if (args.interactorObject.transform.name == "LeftRay")
         {
             args.interactorObject.transform.root.GetChild(1).GetComponent<WeaponManager>().SwitchWeapon(GetComponent<Weapon>());
+            GetComponent<Weapon>().UpdateController(args.interactorObject.transform.root.GetChild(1));
         }
 
         else
         {
             args.interactorObject.transform.root.GetChild(2).GetComponent<WeaponManager>().SwitchWeapon(GetComponent<Weapon>());
+            GetComponent<Weapon>().UpdateController(args.interactorObject.transform.root.GetChild(2));
         }
-        
-        LayerMask layerToIgnore = args.interactorObject.transform.gameObject.layer;
-        Physics.IgnoreLayerCollision(layerToIgnore, gameObject.layer, true);
+       
         GetComponent<Weapon>().isEquipped = true;
         base.OnSelectEntered(args);
+        
         
     }
 
@@ -48,8 +49,6 @@ public class PickUpWeapon : XRGrabInteractable
             args.interactorObject.transform.root.GetChild(2).GetComponent<WeaponManager>().DetachWeapon();
         }
         GetComponent<Weapon>().isEquipped = false;
-        LayerMask layerToIgnore = args.interactorObject.transform.gameObject.layer;
-        Physics.IgnoreLayerCollision(layerToIgnore, gameObject.layer, false);
         base.OnSelectExited(args);
     }
 

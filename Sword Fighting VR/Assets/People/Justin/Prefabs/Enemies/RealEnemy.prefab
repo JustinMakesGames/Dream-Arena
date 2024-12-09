@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5937365131057620454}
   - component: {fileID: 4784290566364402964}
   - component: {fileID: 2387457914401199162}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RealEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 3968
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -196,6 +196,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4523796834539446884}
     m_Modifications:
+    - target: {fileID: 1592748990566162541, guid: eec65c2092f3fd24cbea16009555756d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880785517396599815, guid: eec65c2092f3fd24cbea16009555756d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8368086840871921707, guid: eec65c2092f3fd24cbea16009555756d,
         type: 3}
       propertyPath: m_LocalScale.x

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   ignoresArmor: 0
+  timePunishment: 1
