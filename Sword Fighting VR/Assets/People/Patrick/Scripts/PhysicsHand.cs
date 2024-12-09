@@ -26,6 +26,10 @@ public class PhysicsHand : MonoBehaviour
         rotationDif.ToAngleAxis(out float angle, out Vector3 axis);
         Vector3 rotationDifDegree = angle * axis;
         _rb.angularVelocity = rotationDifDegree * Mathf.Deg2Rad / Time.fixedDeltaTime;
+        if (Vector3.Distance(transform.position, target.position) > 2f)
+        {
+            transform.position = target.position;
+        }
     }
     
     

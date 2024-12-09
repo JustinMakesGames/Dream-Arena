@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DestructibleObject : MonoBehaviour
 {
@@ -7,15 +9,30 @@ public class DestructibleObject : MonoBehaviour
     private Vector3 _edgeVertex;
     private Vector2 _edgeUV;
     private Plane _edgePlane;
-    
+    [SerializeField] private int[] layers;
+    [SerializeField] private int cutCascades = 1;
+    [SerializeField] private float explodeForce = 0;
+    private Rigidbody _rb;
 
-    public int cutCascades = 1;
-    public float explodeForce = 0;
-
-
-    private void Update()
+    private void Start()
     {
-        if (Input.GetMouseButton(0))
+        if (TryGetComponent(out Rigidbody rb))
+        {
+            _rb = rb;
+        }
+        else
+        {
+            _rb = GetComponentInParent<Rigidbody>();
+        }
+        
+        layers = GameManager.GetPlayerLayers();
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (layers.Contains(other.gameObject.layer)) return;
+        print(_rb.velocity.magnitude);
+        if (GetComponent<Rigidbody>().velocity.magnitude > 4)
         {
             DestroyMesh();
         }
@@ -27,7 +44,6 @@ public class DestructibleObject : MonoBehaviour
         originalMesh.RecalculateBounds();
         var parts = new List<PartMesh>();
         var subParts = new List<PartMesh>();
-
         var mainPart = new PartMesh
         {
             uv = originalMesh.uv,
@@ -54,7 +70,6 @@ public class DestructibleObject : MonoBehaviour
                 var plane = new Plane(UnityEngine.Random.onUnitSphere, new Vector3(UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
                                                                                    UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
                                                                                    UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
-
 
                 subParts.Add(GenerateMesh(parts[i], plane, true));
                 subParts.Add(GenerateMesh(parts[i], plane, false));
@@ -121,7 +136,7 @@ public class DestructibleObject : MonoBehaviour
                 plane.Raycast(ray2, out var enter2);
                 var lerp2 = enter2 / dir2.magnitude;
 
-                //first vertex = anchor
+                //the first vertex of the object is the anchor
                 AddEdge(i,
                         partMesh,
                         left ? plane.normal * -1f : plane.normal,
@@ -272,8 +287,10 @@ public class DestructibleObject : MonoBehaviour
             mesh.vertices = vertices;
             mesh.normals = normals;
             mesh.uv = uv;
-            for(var i = 0; i < triangles.Length; i++)
+            for (var i = 0; i < triangles.Length; i++)
+            {
                 mesh.SetTriangles(triangles[i], i, true);
+            }
             bounds = mesh.bounds;
             
             var renderer = gameObject.AddComponent<MeshRenderer>();

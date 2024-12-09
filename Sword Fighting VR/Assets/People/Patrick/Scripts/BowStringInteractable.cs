@@ -8,7 +8,6 @@ public class BowStringInteractable : XRGrabInteractable
 {
     private Transform _tensedStringTransform;
     [SerializeField] private bool hasArrow;
-
     private void Start()
     {
         _tensedStringTransform = transform;
@@ -16,11 +15,11 @@ public class BowStringInteractable : XRGrabInteractable
 
     protected override void Drop()
     {
-        transform.position = _tensedStringTransform.position;
-        transform.rotation = _tensedStringTransform.rotation;
+        transform.position = new Vector3(0, 0.0055f, 0);
+        transform.rotation = Quaternion.identity;
         if (hasArrow)
         {
-            transform.root.GetComponent<Bow>().Shoot();
+            GetComponent<Bow>().Shoot();
         }
     }
 }

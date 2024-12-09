@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5878330693060087203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1436706554186023556}
+  - component: {fileID: 3596842262803426608}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1436706554186023556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878330693060087203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.849342, y: 16.441168, z: -11.027951}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3596842262803426608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878330693060087203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdddf3958e7b3f54a99e2695e99c1546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  score: 1
+  livingEnemyAmount: 0
+  maxRooms: 1524563
+  rooms:
+  - {fileID: 2036676593593901050, guid: dec2b553f0e1184438b93df42a041818, type: 3}
+  outDoor: {fileID: 1631272353874914397, guid: 1eb189340e7df76449929f4322883c06, type: 3}
+  renderTexture: {fileID: 8400000, guid: 711a214a77d50414b85ec3cb07791d5f, type: 2}
+  spawnPos1: {fileID: 0}
+  spawnPos2: {fileID: 0}
+  enemies: []
+  _playerLayers: 070000000800000009000000
+  loseCanvas: {fileID: 4268694430798667192, guid: 132c25b419db1594d9c21893646559e7,
+    type: 3}
+  winCanvas: {fileID: 4268694430798667192, guid: a8ea36236e4914747b3f9e72d84133fd,
+    type: 3}
+  canvasDistance: 10

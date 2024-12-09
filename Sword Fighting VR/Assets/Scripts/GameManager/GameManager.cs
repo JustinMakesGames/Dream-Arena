@@ -35,10 +35,11 @@ public class GameManager : MonoBehaviour
 
     private Vector3 _finalSpawnPos;
     public List<GameObject> enemies;
-
+    [SerializeField] private int[] _playerLayers;
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject winCanvas;
     [SerializeField] private float canvasDistance;
+    public static int[] GetPlayerLayers() => Instance._playerLayers;
 
     private void Awake()
     {
