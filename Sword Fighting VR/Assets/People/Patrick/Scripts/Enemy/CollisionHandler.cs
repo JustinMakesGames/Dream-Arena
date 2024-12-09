@@ -31,9 +31,9 @@ public class CollisionHandler : MonoBehaviour
     
     IEnumerator ChangeColor()
     {
-        transform.root.GetComponent<MeshRenderer>().material.color = Color.red;
+        transform.root.GetComponentInChildren<Renderer>().material.color = Color.red;
         yield return new WaitForSeconds(0.5f);
-        transform.root.GetComponent<MeshRenderer>().material.color = Color.white;
+        transform.root.GetComponentInChildren<Renderer>().material.color = Color.white;
 
     }
 }

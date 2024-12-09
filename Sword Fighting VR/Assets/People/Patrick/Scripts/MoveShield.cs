@@ -11,4 +11,13 @@ public class MoveShield : MonoBehaviour
             transform.rotation = point.rotation;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Weapon"))
+        {
+            print("it worked");
+            StartCoroutine(transform.root.GetComponentInChildren<IKControl>().HandleKnockback());
+        }
+    }
 }

@@ -26,11 +26,8 @@ public class RangeEnemy : EnemyAI
     }
     private void SearchForPosition()
     {
-        print("IS PLAYING");
         Vector3 position = (transform.position - _player.position).normalized;
-
         _endPosition = transform.position + position;
-
         _agent.SetDestination(_endPosition);
 
         

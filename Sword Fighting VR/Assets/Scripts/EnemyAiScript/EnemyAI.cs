@@ -74,7 +74,7 @@ public class EnemyAI : MonoBehaviour
                 HandlingIdle();
                 break;
             case EnemyBehaviourStates.PlayerSpotted:
-
+                HandlingPlayerSpotted();
                 break;
             case EnemyBehaviourStates.PlayerAttack:
                 HandlePlayerAttacking();
@@ -160,6 +160,10 @@ public class EnemyAI : MonoBehaviour
 
     #region PlayerSpotted
 
+    protected virtual void HandlingPlayerSpotted()
+    {
+
+    }
     protected void StartPlayerSpotted()
     {
         OnTick.Instance.onTickEvent += MoveToThePlayer;

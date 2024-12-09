@@ -21,6 +21,9 @@ public class IKControl : MonoBehaviour {
     [SerializeField] private float timeBetweenBlocks;
     [SerializeField] private float distance;
     private bool _doesPlayerHaveAWeapon;
+    [SerializeField] private Transform knockbackLookObj;
+
+    public bool isHit;
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -28,12 +31,13 @@ public class IKControl : MonoBehaviour {
 
     private void Update()
     {
+        
         if (FindActiveWeapon() != null)
         {
             _ikActive = Vector3.Distance(transform.position, FindActiveWeapon().transform.position) <= distance;
         }
         else _ikActive = false;
-        if (_ikActive)
+        if (_ikActive && !isHit)
         {
             rightHandObj = FindActiveWeapon().transform;
             lookObj = rightHandObj;
@@ -92,6 +96,13 @@ public class IKControl : MonoBehaviour {
         _isFrozen = false;
     }
     
+    public IEnumerator HandleKnockback()
+    {
+        isHit = true;
+        rightHandObj = knockbackLookObj;
+        yield return new WaitForSeconds(2);
+        isHit = false;
+    }
     public IEnumerator BlockCooldown()
     {
         yield return new WaitForSeconds(timeBetweenBlocks);

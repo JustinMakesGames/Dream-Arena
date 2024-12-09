@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -14,6 +15,7 @@ public class EnemyShieldBehaviour : MonoBehaviour
     private List<Transform> _positionsForShield = new List<Transform>();
     private bool _shieldHit;
 
+    [SerializeField] private Transform knockbackPosition;
     public Transform leftArm;
 
     private void Start()
@@ -43,7 +45,16 @@ public class EnemyShieldBehaviour : MonoBehaviour
 
     private void Update()
     {
-        HoldingShieldAtPositions();
+        if (_shieldHit)
+        {
+            HandleShieldAway(knockbackPosition);
+        }
+
+        else
+        {
+            HoldingShieldAtPositions();
+        }
+        
         
     }
 
@@ -81,15 +92,29 @@ public class EnemyShieldBehaviour : MonoBehaviour
 
    
 
-    /*private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.transform.CompareTag("Weapon"))
+        if (other.transform.CompareTag("Weapon") && !_shieldHit)
         {
-            Vector3 direction = -transform.parent.parent.forward;
-            direction.y = 0;
+            print("touched"); 
+            transform.root.GetComponent<EnemyAI>().JumpFromDamage();
+            _shieldHit = true;
+            Invoke(nameof(ResetKnockback), 2f);
 
-            transform.parent.parent.GetComponent<EnemyAI>().HandleKnockback(direction.normalized);
         }
-    }*/
+    }
+
+    private void HandleShieldAway(Transform position)
+    {
+        transform.position = Vector3.Lerp(transform.position, position.position, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, position.rotation, rotationSpeed * Time.deltaTime);
+        
+
+    }
+
+    private void ResetKnockback()
+    {
+        _shieldHit = false;
+    }
 
 }
