@@ -19,10 +19,9 @@ public class GrabInteractable : XRGrabInteractable
     }
     private LayerMask GetLayerMask()
     {
-        var grabInteractable = GetComponent<XRGrabInteractable>();
-        if (grabInteractable.isSelected)
+        if (isSelected)
         {
-            XRBaseInteractor interactor = grabInteractable.firstInteractorSelecting as XRBaseInteractor;
+            XRBaseInteractor interactor = firstInteractorSelecting as XRBaseInteractor;
             if (interactor != null)
             {
                 _layerMask = interactor.gameObject.layer;

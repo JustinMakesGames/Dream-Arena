@@ -27,10 +27,10 @@ public class LootManager : MonoBehaviour
 
         rarityMap = new Dictionary<Rarity, float>
         {
-            { Rarity.COMMON, 0.50f },
-            { Rarity.UNCOMMON, 0.25f },
-            { Rarity.RARE, 0.245f },
-            { Rarity.LEGENDARY, 0.005f },
+            { Rarity.COMMON, 0.50f }, //50%
+            { Rarity.UNCOMMON, 0.25f }, //25%
+            { Rarity.RARE, 0.20f }, //20%
+            { Rarity.LEGENDARY, 0.05f }, //5%
         };
     }
     
@@ -43,7 +43,7 @@ public class LootManager : MonoBehaviour
 
     }
     
-    public T GetRandomRarity<T>(Dictionary<T, float> weights)
+    public Rarity GetRandomRarity(Dictionary<Rarity, float> weights)
     {
         float totalWeight = 0f;
         foreach (var weight in weights.Values)

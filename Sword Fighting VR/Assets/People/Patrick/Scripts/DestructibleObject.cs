@@ -9,30 +9,22 @@ public class DestructibleObject : MonoBehaviour
     private Vector3 _edgeVertex;
     private Vector2 _edgeUV;
     private Plane _edgePlane;
-    [SerializeField] private int[] layers;
+    private int[] _layers;
     [SerializeField] private int cutCascades = 1;
     [SerializeField] private float explodeForce = 0;
     private Rigidbody _rb;
+    [SerializeField] private float minVelocityToBreak;
 
     private void Start()
     {
-        if (TryGetComponent(out Rigidbody rb))
-        {
-            _rb = rb;
-        }
-        else
-        {
-            _rb = GetComponentInParent<Rigidbody>();
-        }
-        
-        layers = GameManager.GetPlayerLayers();
+        _rb = TryGetComponent(out Rigidbody rb) ? rb : GetComponentInParent<Rigidbody>();
+        _layers = GameManager.GetPlayerLayers();
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (layers.Contains(other.gameObject.layer)) return;
-        print(_rb.velocity.magnitude);
-        if (GetComponent<Rigidbody>().velocity.magnitude > 4)
+        if (_layers.Contains(other.gameObject.layer)) return;
+        if (GetComponent<Rigidbody>().velocity.magnitude > minVelocityToBreak)
         {
             DestroyMesh();
         }

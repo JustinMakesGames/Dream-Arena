@@ -6,11 +6,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PickUpWeapon : XRGrabInteractable
 {
+    private LayerMask _layerMask;
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        if (args.interactorObject.transform.TryGetComponent<HandleGrabbing>(out _))
+        if (args.interactorObject.transform.TryGetComponent(out HandleGrabbing component))
         {
-            args.interactorObject.transform.GetComponent<HandleGrabbing>().AttachObject(transform);
+            component.AttachObject(transform);
         }
 
         if (args.interactorObject.transform.name == "LeftRay")
@@ -27,16 +28,16 @@ public class PickUpWeapon : XRGrabInteractable
        
         GetComponent<Weapon>().isEquipped = true;
         base.OnSelectEntered(args);
-        
+        Physics.IgnoreLayerCollision(gameObject.layer, args.interactorObject.transform.gameObject.layer, true);
         
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         print("Exited");
-        if (args.interactorObject.transform.TryGetComponent<HandleGrabbing>(out _))
+        if (args.interactorObject.transform.TryGetComponent(out HandleGrabbing handle))
         {
-            args.interactorObject.transform.GetComponent<HandleGrabbing>().RemoveObject(transform);
+            handle.RemoveObject(transform);
         }
 
         if (args.interactorObject.transform.name == "LeftRay")
@@ -50,9 +51,13 @@ public class PickUpWeapon : XRGrabInteractable
         }
         GetComponent<Weapon>().isEquipped = false;
         base.OnSelectExited(args);
+        StartCoroutine(WaitForDrop(args.interactorObject.transform.gameObject.layer));
     }
+    
+    private IEnumerator WaitForDrop(LayerMask mask)
+    {
+        yield return new WaitForSeconds(0.5f);
+        Physics.IgnoreLayerCollision(mask, gameObject.layer, false);
 
-
-
-
+    }
 }

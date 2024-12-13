@@ -18,13 +18,10 @@ public class SwordPhysics : MonoBehaviour
     private Transform _origin;
     private List<Coroutine> _currentlyActiveCoroutines = new();
     private Weapon _weapon;
-
-    private void Start() 
-    {
-        StartCoroutine(PhysicsHandling());
-    }
+    
     private void OnTransformParentChanged()
     {
+        StartCoroutine(PhysicsHandling());
         _weapon = GetComponent<Weapon>();
         if (!_weapon.isEquipped) return;
         _rbHand = GetComponentInParent<PhysicsHand>();
@@ -45,11 +42,9 @@ public class SwordPhysics : MonoBehaviour
             }
             _origin = _rb.transform;
             yield return new WaitUntil(() => _origin.position != _rb.position);
-            
-            StartCoroutine(SlerpToPosition(_origin.position, _rb.position, 
-                (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude)); 
-            StartCoroutine(SlerpToRotation(_origin.rotation, _rb.rotation, 
-                (Time.deltaTime / _rb.mass) * _rb.velocity.magnitude));
+            StartCoroutine(SlerpToPosition(_origin.position, _rb.position,
+                ((Time.deltaTime / _rb.mass) * _rb.velocity.magnitude))); 
+            StartCoroutine(SlerpToRotation(_origin.rotation, _rb.rotation, ((Time.deltaTime / _rb.mass) * _rb.velocity.magnitude) * 5 ));
             yield return new WaitForFixedUpdate();
             
         }
