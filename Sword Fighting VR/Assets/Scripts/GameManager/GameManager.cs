@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject winCanvas;
     [SerializeField] private float canvasDistance;
+
+    [SerializeField] private Transform spawnPlace;
+    private bool _hasStarted;
+
+    
     public static int[] GetPlayerLayers() => Instance._playerLayers;
 
     private void Awake()
@@ -49,6 +54,11 @@ public class GameManager : MonoBehaviour
         }
 
         _finalSpawnPos = spawnPos1.position;
+    }
+
+    private void Start()
+    {
+        GenerateNextRoom();
     }
 
     public void EndBattle()
@@ -66,6 +76,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+
     private void GenerateNextRoom()
     {
         
@@ -76,6 +88,19 @@ public class GameManager : MonoBehaviour
         _finalSpawnPos = _finalSpawnPos == spawnPos1.position ? spawnPos2.position : spawnPos1.position;
 
         newRoom.GetComponent<HandleBattling>().HandleSpawningDoor();
+
+        if (!_hasStarted)
+        {
+            _hasStarted = true;
+            return;
+        }
+
+        newRoom.GetComponent<RoomHandler>().StartGenerating();
+    }
+
+    public void PlayFirstBattle()
+    {
+        FindObjectOfType<RoomHandler>().StartGenerating();
     }
 
     public void StartBattle()
@@ -116,7 +141,7 @@ public class GameManager : MonoBehaviour
             OnTick.Instance.onTickEvent -= CheckIfEnemiesAlive;
         }
     }
-
+    
     public void HandleGameOver()
     {
         OnTick.Instance.onTickEvent -= CheckIfEnemiesAlive;
@@ -135,7 +160,4 @@ public class GameManager : MonoBehaviour
 
         Instantiate(winCanvas);
     }
-
-
-
 }

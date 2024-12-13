@@ -15,17 +15,19 @@ public class RoomHandler : MonoBehaviour
     private int _randomEnemyGroup;
     private List<Transform> _enemyPositions = new List<Transform>();
 
-    private void Start()
+    [Header("Items")]
+    [SerializeField] private List<GameObject> possibleItems;
+    [SerializeField] private Transform itemFolder;
+    private List<Transform> itemPositions;
+    private List<Transform> spawnedItems;
+
+    public void StartGenerating()
     {
         SetEnemyPositionsInArray();
         ChooseEnemyGroup();
         SpawningEnemies();
         HandleBeginningBattle();
-    }
-
-    public void StartGenerating()
-    {
-        
+        SpawnOccasionalItems();
     }
 
     private void SetEnemyPositionsInArray()
@@ -68,6 +70,23 @@ public class RoomHandler : MonoBehaviour
     {
         GameManager.Instance.StartBattle();
     }
+
+    private void SpawnOccasionalItems()
+    {
+        spawnedItems.Clear();
+        int randomAmount = UnityEngine.Random.Range(0, 3);
+        int randomItem = UnityEngine.Random.Range(0, possibleItems.Count);
+        int randomPosition = UnityEngine.Random.Range(0, itemPositions.Count);
+
+        for (int i = 0; i < randomAmount; i++)
+        {
+            GameObject itemClone = Instantiate(possibleItems[randomItem], itemPositions[randomPosition].position, Quaternion.identity);
+            spawnedItems.Add(itemClone.transform);
+
+        }
+    }
+
+
 
 
 

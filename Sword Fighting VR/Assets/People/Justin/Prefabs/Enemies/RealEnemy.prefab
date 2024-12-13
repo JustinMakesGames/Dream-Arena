@@ -60,10 +60,10 @@ MonoBehaviour:
   plusOffset: 3
   changeAngle: 0
   isAttacking: 0
-  knockbackForce: 3
+  knockbackForce: 1
   enemyStats: {fileID: 11400000, guid: fd36c6d67b3dab94ebf830e8a15b142e, type: 2}
-  jumpForce: 10
-  knockbackDuration: 2
+  jumpForce: 1
+  knockbackDuration: 0.5
   item: {fileID: 4383553249133825269, guid: a829464a9676504429e93a10e4e1e6af, type: 3}
 --- !u!114 &1850097977459907159
 MonoBehaviour:
@@ -116,7 +116,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
@@ -139,10 +139,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.49
-  m_Height: 4.96
+  m_Radius: 0.12
+  m_Height: 1.82
   m_Direction: 1
-  m_Center: {x: 0.0041885376, y: 1.7, z: 0}
+  m_Center: {x: 0.0041885376, y: 0.23, z: 0}
 --- !u!136 &4784290566364402964
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -162,10 +162,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.61
-  m_Height: 4.96
+  m_Radius: 0.16
+  m_Height: 3.69
   m_Direction: 1
-  m_Center: {x: 0.0041885376, y: 1.7, z: 0}
+  m_Center: {x: 0.0041885376, y: 0.23, z: 0}
 --- !u!195 &2387457914401199162
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -206,6 +206,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2504360322340975185, guid: eec65c2092f3fd24cbea16009555756d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361487068401850167, guid: eec65c2092f3fd24cbea16009555756d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 670224309865224971, guid: 11cd62256b1d470f922b2c8e6446cc77,
+        type: 3}
     - target: {fileID: 8368086840871921707, guid: eec65c2092f3fd24cbea16009555756d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -284,6 +295,8 @@ PrefabInstance:
     - {fileID: 6356277903597442227, guid: eec65c2092f3fd24cbea16009555756d, type: 3}
     - {fileID: 559384461134364035, guid: eec65c2092f3fd24cbea16009555756d, type: 3}
     - {fileID: 4147057368939603862, guid: eec65c2092f3fd24cbea16009555756d, type: 3}
+    - {fileID: 6322290281222940886, guid: eec65c2092f3fd24cbea16009555756d, type: 3}
+    - {fileID: 7677124737770119225, guid: eec65c2092f3fd24cbea16009555756d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

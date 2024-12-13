@@ -62,6 +62,11 @@ public class EnemyAI : MonoBehaviour
     protected void Start()
     {
         _player = PlayerReferenceScript.Instance.transform;
+
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, Mathf.Infinity, NavMesh.AllAreas))
+        {
+            transform.position = hit.position;
+        }
         SwitchOnce();
     }
 
@@ -297,6 +302,13 @@ public class EnemyAI : MonoBehaviour
         _rb.velocity = Vector3.zero;
         _agent.enabled = true;
         _rb.isKinematic = true;
+
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, Mathf.Infinity, NavMesh.AllAreas))
+        {
+            transform.position = hit.position;
+        }
+
+
     }
 
     public void ChanceToSpawnItems()
