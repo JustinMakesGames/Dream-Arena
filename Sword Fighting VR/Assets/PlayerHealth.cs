@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
 
     [SerializeField] private float endTime;
 
@@ -14,17 +16,18 @@ public class PlayerHealth : MonoBehaviour
     private bool _isHit;
     private float _time;
 
-    private Rigidbody _rb;
+    private RawImage _image;
+
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        _image = GetComponentInChildren<RawImage>();
     }
 
     private void Update()
     {
         TimePunishment();
-        
+
     }
 
     private void TimePunishment()
@@ -45,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isHit) return; 
         health -= damage;
+
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, CalculateColor());
         Knockback();
         if (health <= 0)
         {
@@ -52,13 +57,17 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private float CalculateColor()
+    {
+        float color = 1 - ((float)health / (float)maxHealth);
+        print(color);
+        return color;
+    }
+
     private void Knockback()
     {
         Vector3 direction = (transform.position - (transform.position + transform.forward)).normalized;
         direction.y = jumpForce;
-        print("jumped");
-        _rb.AddForce(direction * knockbackForce, ForceMode.VelocityChange);
-        print(direction * knockbackForce);
 
         Invoke(nameof(ResetKnockback), knockbackDuration);
 
@@ -67,7 +76,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void ResetKnockback()
     {
-        _rb.velocity = Vector3.zero;
     }
 
 

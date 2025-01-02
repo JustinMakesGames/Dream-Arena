@@ -26,7 +26,6 @@ public class RoomHandler : MonoBehaviour
         SetEnemyPositionsInArray();
         ChooseEnemyGroup();
         SpawningEnemies();
-        HandleBeginningBattle();
         SpawnOccasionalItems();
     }
 
@@ -66,14 +65,12 @@ public class RoomHandler : MonoBehaviour
         }
     }
 
-    private void HandleBeginningBattle()
-    {
-        GameManager.Instance.StartBattle();
-    }
-
     private void SpawnOccasionalItems()
     {
         spawnedItems.Clear();
+        int randomChance = UnityEngine.Random.Range(0, 2);
+
+        if (randomChance == 0) return;
         int randomAmount = UnityEngine.Random.Range(0, 3);
         int randomItem = UnityEngine.Random.Range(0, possibleItems.Count);
         int randomPosition = UnityEngine.Random.Range(0, itemPositions.Count);

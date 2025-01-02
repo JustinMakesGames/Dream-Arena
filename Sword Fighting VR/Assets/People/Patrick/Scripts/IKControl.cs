@@ -17,7 +17,7 @@ public class IKControl : MonoBehaviour {
     private EnemyStats _stats;
     private bool _hasBlocked;
     private bool _isFrozen;
-    private Vector3 _frozenRightHandPosition;
+    private Vector3 _frozenLeftHandPosition;
     [SerializeField] private float timeBetweenBlocks;
     [SerializeField] private float distance;
     private bool _doesPlayerHaveAWeapon;
@@ -64,21 +64,21 @@ public class IKControl : MonoBehaviour {
                 {
                     if (!_isFrozen)
                     {
-                        _currentPos = _animator.GetIKPosition(AvatarIKGoal.RightHand);
-                        _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                        _animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.position);
+                        _currentPos = _animator.GetIKPosition(AvatarIKGoal.LeftHand);
+                        _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                        _animator.SetIKPosition(AvatarIKGoal.LeftHand, rightHandObj.position);
                         FreezeIK();
                     }
                     else
                     {
-                        _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);  
-                        _animator.SetIKPosition(AvatarIKGoal.RightHand, _frozenRightHandPosition);
+                        _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);  
+                        _animator.SetIKPosition(AvatarIKGoal.LeftHand, _frozenLeftHandPosition);
                     }
                 }
             }
             else
             {
-                _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
+                _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
                 _animator.SetLookAtWeight(0);
             }
         }
@@ -86,7 +86,7 @@ public class IKControl : MonoBehaviour {
     
     private void FreezeIK()
     {
-        _frozenRightHandPosition = _animator.GetIKPosition(AvatarIKGoal.RightHand);
+        _frozenLeftHandPosition = _animator.GetIKPosition(AvatarIKGoal.LeftHand);
         _isFrozen = true;
         StartCoroutine(BlockCooldown());
     }

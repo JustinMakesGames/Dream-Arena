@@ -43,6 +43,8 @@ public class EnemyAI : MonoBehaviour
     [Header("DeathSpawning")]
     [SerializeField] protected GameObject item;
 
+    private Animator _animator;
+
     public enum EnemyBehaviourStates
     {
         Idle,
@@ -57,6 +59,7 @@ public class EnemyAI : MonoBehaviour
         _originalPosition = transform.position;
         _swordBehaviourScript = GetComponentInChildren<SwordBehaviour>();
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     protected void Start()
@@ -72,6 +75,7 @@ public class EnemyAI : MonoBehaviour
 
     protected void Update()
     {
+        UpdateAnimation();
         CheckForAttackDistance();
         switch (enemyState)
         {
@@ -84,6 +88,14 @@ public class EnemyAI : MonoBehaviour
             case EnemyBehaviourStates.PlayerAttack:
                 HandlePlayerAttacking();
                 break;
+        }
+    }
+
+    protected void UpdateAnimation()
+    {
+        if (_animator != null)
+        {
+            _animator.SetFloat("Walking", _agent.velocity.magnitude);
         }
     }
 
@@ -138,7 +150,7 @@ public class EnemyAI : MonoBehaviour
 
     protected void SearchForNewPosition()
     {
-        if (Vector3.Distance(transform.position, _endDestination) < 0.5f && !_hasMoved)
+        if (Vector3.Distance(transform.position, new Vector3(_endDestination.x, transform.position.y, _endDestination.z)) < 0.1f && !_hasMoved)
         {
             _endDestination = GetPosition();
             _hasMoved = true;
@@ -264,8 +276,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _player.position) < playerRange && !isAttacking)
         {
+            _animator.SetTrigger("Attack");
             isAttacking = true;
-            _swordBehaviourScript.StartAttacking();
+
+            
             
         }
 

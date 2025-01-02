@@ -52,13 +52,15 @@ MonoBehaviour:
   allEnemyCombinations:
   - groupName: EnemyGroup
     possibleEnemies:
-    - {fileID: 9178449891354119615, guid: 1ae6ea2b0a2cd45419a3c1e5c6362fcc, type: 3}
+    - {fileID: 6309471627122853538, guid: 670bbd048847c6843a63d6bfc9b7eab0, type: 3}
     minScoreCost: 1
     maxScoreCost: 2147483647
     orderState: 1
   possibleEnemyCombinations: []
   enemyPositionFolder: {fileID: 6186979385794994354}
   enemyAmount: 1
+  possibleItems: []
+  itemFolder: {fileID: 0}
 --- !u!114 &8302939321796093112
 MonoBehaviour:
   m_ObjectHideFlags: 0

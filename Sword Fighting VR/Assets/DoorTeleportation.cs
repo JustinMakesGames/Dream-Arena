@@ -29,9 +29,10 @@ public class DoorTeleportation : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print("Touched door");
-            other.transform.position = _outDoor.position + _outDoor.forward;
+            VRTeleportScript.TeleportVrPlayer(other.transform, _outDoor.position + _outDoor.forward);
             other.transform.rotation = _outDoor.rotation;
+
+            if (GameManager.Instance != null) GameManager.Instance.StartBattle();
             Destroy(_outDoor.gameObject);
             Destroy(transform.root.gameObject);
         }

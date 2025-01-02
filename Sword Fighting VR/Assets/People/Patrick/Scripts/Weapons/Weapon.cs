@@ -82,7 +82,6 @@ public class Weapon : MonoBehaviour
             int damage = CalculateDamage(velocity.magnitude, weaponSo.damage);
             return damage;
         }
-        print("no damage");
         return 0;
     }
 

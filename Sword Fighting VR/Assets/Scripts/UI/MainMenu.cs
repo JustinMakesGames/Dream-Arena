@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public string scene;
+    public Transform endPosition;
     public enum MainMenuStates
     {
         Play,
@@ -26,13 +28,13 @@ public class MainMenu : MonoBehaviour
                     PlayFunction();
                     break;
                 case MainMenuStates.Settings:
-                    //SettingsFunction();
+                    SettingsFunction(other.transform);
                     break;
                 case MainMenuStates.Credits:
-                    //CreditsFunction();
+                    CreditsFunction(other.transform);
                     break;
                 case MainMenuStates.Quit:
-                    //QuitFunction();
+                    QuitFunction();
                     break;
             }
         }
@@ -42,5 +44,21 @@ public class MainMenu : MonoBehaviour
     private void PlayFunction()
     {
         SceneManager.LoadScene(scene);
+    }
+
+    private void SettingsFunction(Transform player)
+    {
+        VRTeleportScript.TeleportVrPlayer(player, endPosition.position  );
+        
+    }
+
+    private void CreditsFunction(Transform player)
+    {
+        VRTeleportScript.TeleportVrPlayer(player, endPosition.position);   
+    }
+
+    private void QuitFunction()
+    {
+        Application.Quit();
     }
 }

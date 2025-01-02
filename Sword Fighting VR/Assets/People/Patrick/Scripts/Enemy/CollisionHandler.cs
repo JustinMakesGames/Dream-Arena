@@ -13,11 +13,9 @@ public class CollisionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            print("Collision detected" + other.transform.name);
             Weapon weapon = other.gameObject.GetComponent<Weapon>();
             if (weapon.isEquipped)
             {
-                print("DAMAGE BY " + other.transform.name);
                 _damage = weapon.GetDamage(other);
                 bool ignoresArmor = weapon.IgnoresArmor();
                 if (_damage == 0)
@@ -32,9 +30,19 @@ public class CollisionHandler : MonoBehaviour
     
     IEnumerator ChangeColor()
     {
-        transform.root.GetComponentInChildren<Renderer>().material.color = Color.red;
+        Renderer[] renderers = transform.root.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = Color.red;
+        }
+
         yield return new WaitForSeconds(0.5f);
-        transform.root.GetComponentInChildren<Renderer>().material.color = Color.white;
+
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.material.color = Color.white;
+        }
 
     }
 }

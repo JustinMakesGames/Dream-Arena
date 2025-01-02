@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckIfEnemiesAlive()
     {
+        print("Still checking");
         List<GameObject> deadEnemies = new List<GameObject>();
         for (int i = 0; i < enemies.Count; i++)
         {
