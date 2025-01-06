@@ -277,10 +277,7 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, _player.position) < playerRange && !isAttacking)
         {
             _animator.SetTrigger("Attack");
-            isAttacking = true;
-
-            
-            
+            isAttacking = true;  
         }
 
         else if (Vector3.Distance(transform.position, _player.position) > playerRange && isAttacking)

@@ -18,8 +18,8 @@ public class RoomHandler : MonoBehaviour
     [Header("Items")]
     [SerializeField] private List<GameObject> possibleItems;
     [SerializeField] private Transform itemFolder;
-    private List<Transform> itemPositions;
-    private List<Transform> spawnedItems;
+    private List<Transform> itemPositions = new List<Transform>();
+    private List<Transform> spawnedItems = new List<Transform>();
 
     public void StartGenerating()
     {
@@ -67,6 +67,10 @@ public class RoomHandler : MonoBehaviour
 
     private void SpawnOccasionalItems()
     {
+        for (int i = 0; i < itemFolder.childCount; i++)
+        {
+            itemPositions.Add(itemFolder.GetChild(i));
+        }
         spawnedItems.Clear();
         int randomChance = UnityEngine.Random.Range(0, 2);
 

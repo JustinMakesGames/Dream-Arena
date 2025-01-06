@@ -14,15 +14,15 @@ public class HandleBattling : MonoBehaviour
     
     public void HandleSpawningDoor()
     {
-        SpawnDoor(outDoor);
+        SpawnDoor(outDoor, false);
     }
     public void HandleWinning()
     {
-        SpawnDoor(inDoor);
+        SpawnDoor(inDoor, true);
         GameManager.Instance.EndBattle();
     }
    
-    private void SpawnDoor(GameObject door)
+    private void SpawnDoor(GameObject door, bool isIndoor)
     {
         for (int i = 0; i < wallFolder.childCount; i++)
         {
@@ -31,21 +31,22 @@ public class HandleBattling : MonoBehaviour
         int randomWall = Random.Range(0, _walls.Count);
 
         _bounds = _walls[randomWall].GetComponent<Collider>().bounds;
-        Vector3 randomPos = SearchRandomDoorPosition(randomWall);
+        Vector3 randomPos = SearchRandomDoorPosition(randomWall, isIndoor);
 
-        GameObject cloneDoor = Instantiate(door, Vector3.zero, _walls[randomWall].rotation, transform);
+        GameObject cloneDoor = Instantiate(door, Vector3.zero, _walls[randomWall].rotation);
         cloneDoor.transform.position = randomPos;
         cloneDoor.transform.parent = _walls[randomWall];
     }
 
-    private Vector3 SearchRandomDoorPosition(int index)
+    private Vector3 SearchRandomDoorPosition(int index, bool isIndoor)
     {
         Vector3 minLocal = _walls[index].InverseTransformPoint(_bounds.min);
         Vector3 maxLocal = _walls[index].InverseTransformPoint(_bounds.max);
-        Vector3 localPos = new Vector3(
-            Random.Range(minLocal.x, maxLocal.x),
-            minLocal.y,
-           transform.forward.z * 0.5f);
+        Vector3 centerLocal = _walls[index].InverseTransformPoint(_bounds.center);
+        Vector3 localPos = new Vector3(centerLocal.x, minLocal.y, maxLocal.z);
+
+        if (!isIndoor) localPos.y += 1.5f;
+        
 
         Vector3 newPos = _walls[index].TransformPoint(localPos);
 
