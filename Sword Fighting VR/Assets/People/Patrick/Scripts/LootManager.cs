@@ -19,17 +19,21 @@ public class LootManager : MonoBehaviour
     public Loot[] possibleLoot;
     public static LootManager Instance;
     public Dictionary<Rarity, float> rarityMap;
-    
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
 
+
+    }
+
+    void Start()
+    {
         rarityMap = new Dictionary<Rarity, float>
         {
-            { Rarity.COMMON, 0.50f }, //50%
+            { Rarity.COMMON, 0.55f}, //55%
             { Rarity.UNCOMMON, 0.25f }, //25%
-            { Rarity.RARE, 0.20f }, //20%
+            { Rarity.RARE, 0.15f }, //15%
             { Rarity.LEGENDARY, 0.05f }, //5%
         };
     }
@@ -45,15 +49,10 @@ public class LootManager : MonoBehaviour
     
     public Rarity GetRandomRarity(Dictionary<Rarity, float> weights)
     {
-        float totalWeight = 0f;
-        foreach (var weight in weights.Values)
-        {
-            totalWeight += weight;
-        }
-
+        float totalWeight = weights.Values.Sum();
         float random = Random.value * totalWeight;
         float cumulativeWeight = 0f;
-        foreach (var key in weights)
+        foreach (KeyValuePair<Rarity, float> key in weights)
         {
             cumulativeWeight += key.Value;
             if (random <= cumulativeWeight)

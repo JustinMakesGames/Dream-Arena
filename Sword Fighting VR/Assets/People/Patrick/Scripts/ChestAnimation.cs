@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ChestAnimation : MonoBehaviour
 {
@@ -13,30 +14,23 @@ public class ChestAnimation : MonoBehaviour
     [SerializeField] private GameObject glowing;
     [SerializeField] private Transform lid;
     private Material _glowingMaterial;
-    private bool _opened = false;
-
-
+    public bool opened { get; private set; }
+    
     private void Start()
     {
         animator = GetComponent<Animator>();
         _glowingMaterial = glowing.GetComponent<Renderer>().material;
     }
 
+    
 
-    private void Update()
+    public void OpenChest()
     {
-        if (Input.GetMouseButtonDown(0) && !_opened)
-        {
-            OpenChest();
-            _opened = true;
-        }
-    }
-
-    private void OpenChest()
-    {
+        opened = true;
         loot = LootManager.Instance.GetLoot();
         _glowingMaterial.SetColor("_EmissionColor", loot.color * 10);
         _lootObject = Instantiate(loot.prefab, lootTransform.position, lootTransform.rotation);
+        _lootObject.GetComponent<Rigidbody>().useGravity = false;
         animator.SetBool("Chest Opened", true);
         StartCoroutine(LerpToPosition());
         StartCoroutine(LerpToRotation());
@@ -46,7 +40,7 @@ public class ChestAnimation : MonoBehaviour
     private IEnumerator LerpToPosition()
     {
         yield return new WaitForSeconds(0.8f);
-        while (_lootObject.transform.position != lootShowcaseTransform.position)
+        while (Vector3.Distance(_lootObject.transform.position, lootShowcaseTransform.position) > 0.1f)
         {
             _lootObject.transform.position = Vector3.Lerp(_lootObject.transform.position, lootShowcaseTransform.position, Time.deltaTime * 2);
             yield return null;
@@ -56,7 +50,7 @@ public class ChestAnimation : MonoBehaviour
     private IEnumerator LerpToRotation()
     {
         yield return new WaitForSeconds(0.8f);
-        while (_lootObject.transform.rotation != lootShowcaseTransform.rotation)
+        while (Vector3.Distance(_lootObject.transform.rotation.eulerAngles, lootShowcaseTransform.rotation.eulerAngles) > 0.1f)
         {
             _lootObject.transform.rotation = Quaternion.Lerp(_lootObject.transform.rotation, lootShowcaseTransform.rotation, Time.deltaTime * 2);
             yield return null;

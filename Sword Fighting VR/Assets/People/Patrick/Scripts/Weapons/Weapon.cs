@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Weapon : MonoBehaviour
 {
+    protected string[] cuttableLimbs =
+    {
+        "Head",
+        "Left_Arm",
+        "Right_Arm",
+        "Left_Leg",
+        "Right_Leg",
+    };
+    
     public InputActionProperty inputActionPosition;
     public InputActionProperty inputActionRotation;
     public ActionBasedController controller;
@@ -31,6 +41,7 @@ public class Weapon : MonoBehaviour
 
     private float _time;
     private bool _isHit;
+    protected Rigidbody rb;
     
     protected virtual void Start()
     {
@@ -106,6 +117,16 @@ public class Weapon : MonoBehaviour
 
         return damage;
     }
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (cuttableLimbs.Contains(collision.gameObject.name.ToLower()))
+        {
+            if (rb.velocity.magnitude > 2)
+            {
+                GameObject obj = collision.gameObject;
+                collision.gameObject.GetComponent<EnemyHealth>().LoseLimb(obj);
+            }
+        }
+    }
     
 }

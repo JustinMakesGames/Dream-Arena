@@ -1,4 +1,5 @@
 using System;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 public enum ColliderType {
     HEAD,
@@ -15,7 +16,9 @@ public class EnemyHealth : MonoBehaviour
     public int GetHealth() => _health;
     private DamageModifiers _damageModifiers;
     [SerializeField] private EnemyStats stats;
-
+    public GameObject ragdoll;
+    public bool hasLostLimb;
+    public GameObject[] lostLimbs;
     private void Start()
     {
         _damageModifiers = stats.damageModifiers;
@@ -39,7 +42,13 @@ public class EnemyHealth : MonoBehaviour
         TakeDamage(damage);
     }
 
-    public void TakeDamage(int damage)
+    [ContextMenu("Take Damage")]
+    private void ContextMenuDamage()
+    {
+        TakeDamage(10000);
+    }
+    
+    private void TakeDamage(int damage)
     {
         _health -= damage;
 
@@ -47,7 +56,13 @@ public class EnemyHealth : MonoBehaviour
         if (_health <= 0)
         {
             GetComponent<EnemyAI>().ChanceToSpawnItems();
-            Destroy(gameObject);
+            RagdollManager.SpawnRagdoll(this);
         }
     }
+
+    public void LoseLimb(GameObject limb)
+    {
+        gameObject.GetNamedChild(limb.name).transform.SetParent(GameObject.Find("LostLimbs").transform);
+        TakeDamage(_health);
+    } 
 }

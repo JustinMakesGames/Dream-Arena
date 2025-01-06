@@ -16,7 +16,6 @@ public class MoveShield : MonoBehaviour
     {
         if (collision.transform.CompareTag("Weapon"))
         {
-            print("it worked");
             StartCoroutine(transform.root.GetComponentInChildren<IKControl>().HandleKnockback());
         }
     }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f557bb1de2281943bdea871382e0a6a, type: 3}
   m_Name: Rare
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5784937740572704771, guid: 43580b8155f873742b57145f7be16d2d, type: 3}
+  prefab: {fileID: 4383553249133825269, guid: a829464a9676504429e93a10e4e1e6af, type: 3}
   color: {r: 0, g: 0.97310853, b: 1, a: 0}
   rarity: 2

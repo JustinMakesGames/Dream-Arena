@@ -18,8 +18,8 @@ public class WeaponManager : MonoBehaviour
     
     public void SwitchWeapon(Weapon weaponScript)
     {
-        this._weaponScript.isEquipped = false;
-        this._weaponScript = weaponScript;
+        _weaponScript.isEquipped = false;
+        _weaponScript = weaponScript;
         _weaponScript.isEquipped = true;
 
         print("Switched");
@@ -33,7 +33,7 @@ public class WeaponManager : MonoBehaviour
             _weaponScript.isEquipped = false;
         }
         
-        this._weaponScript = originalWeapon;
+        _weaponScript = originalWeapon;
         _weaponScript.isEquipped = true;
 
         print("Detached");

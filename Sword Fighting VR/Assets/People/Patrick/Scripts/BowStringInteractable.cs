@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class BowStringInteractable : XRGrabInteractable
+public class BowStringInteractable : GrabInteractable
 {
     private Transform _tensedStringTransform;
     [SerializeField] private bool hasArrow;
@@ -12,7 +12,7 @@ public class BowStringInteractable : XRGrabInteractable
     {
         _tensedStringTransform = transform;
     }
-
+    
     protected override void Drop()
     {
         transform.position = new Vector3(0, 0.0055f, 0);
