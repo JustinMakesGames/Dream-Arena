@@ -56,7 +56,8 @@ public class EnemyHealth : MonoBehaviour
         if (_health <= 0)
         {
             GetComponent<EnemyAI>().ChanceToSpawnItems();
-            RagdollManager.SpawnRagdoll(this);
+            Destroy(gameObject);
+            //RagdollManager.SpawnRagdoll(this);
         }
     }
 

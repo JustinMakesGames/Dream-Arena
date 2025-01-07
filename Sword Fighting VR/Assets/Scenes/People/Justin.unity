@@ -5407,6 +5407,11 @@ PrefabInstance:
       objectReference: {fileID: 1758949926}
     - target: {fileID: 3596842262803426608, guid: 0c53e447baa491540beb70d743bdc744,
         type: 3}
+      propertyPath: maxRooms
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596842262803426608, guid: 0c53e447baa491540beb70d743bdc744,
+        type: 3}
       propertyPath: spawnPos1
       value: 
       objectReference: {fileID: 190008312}

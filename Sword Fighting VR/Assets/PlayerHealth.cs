@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     private bool _isHit;
     private float _time;
 
+    private Rigidbody _rb;
     private RawImage _image;
 
 
@@ -23,7 +25,6 @@ public class PlayerHealth : MonoBehaviour
     {
         _image = GetComponentInChildren<RawImage>();
     }
-
     private void Update()
     {
         TimePunishment();
@@ -48,13 +49,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (_isHit) return; 
         health -= damage;
-
-        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, CalculateColor());
-        Knockback();
         if (health <= 0)
         {
             GameManager.Instance.HandleGameOver();
         }
+
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, CalculateColor());
+        Knockback();
     }
 
     private float CalculateColor()
@@ -66,8 +67,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Knockback()
     {
+        _isHit = true;
         Vector3 direction = (transform.position - (transform.position + transform.forward)).normalized;
         direction.y = jumpForce;
+
 
         Invoke(nameof(ResetKnockback), knockbackDuration);
 
@@ -76,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void ResetKnockback()
     {
+        _isHit = false;
     }
 
 
