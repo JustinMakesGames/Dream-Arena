@@ -9,6 +9,14 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] private bool hasArmor;
     [SerializeField] private float armorDamageReduction;
     private int _damage;
+    private Color originalColor;
+
+    private void Start()
+    {
+        Renderer[] renderers = transform.root.GetComponentsInChildren<Renderer>();
+
+        originalColor = renderers[0].material.color;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Weapon"))
@@ -31,7 +39,6 @@ public class CollisionHandler : MonoBehaviour
     IEnumerator ChangeColor()
     {
         Renderer[] renderers = transform.root.GetComponentsInChildren<Renderer>();
-
         foreach (Renderer renderer in renderers)
         {
             renderer.material.color = Color.red;
@@ -41,7 +48,7 @@ public class CollisionHandler : MonoBehaviour
 
         foreach (Renderer renderer in renderers)
         {
-            renderer.material.color = Color.white;
+            renderer.material.color = originalColor;
         }
 
     }
