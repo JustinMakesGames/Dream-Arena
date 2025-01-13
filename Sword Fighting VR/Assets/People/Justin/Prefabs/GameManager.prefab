@@ -61,3 +61,4 @@ MonoBehaviour:
   winCanvas: {fileID: 4268694430798667192, guid: a8ea36236e4914747b3f9e72d84133fd,
     type: 3}
   canvasDistance: 10
+  spawnPlace: {fileID: 0}

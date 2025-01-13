@@ -1,25 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class BowStringInteractable : GrabInteractable
 {
-    private Transform _tensedStringTransform;
+    private Vector3 _oldTransform;
     [SerializeField] private bool hasArrow;
-    private void Start()
+    [SerializeField] private Bow bow;
+    private GameObject _pijlPlaceHolder;
+
+    void Start()
     {
-        _tensedStringTransform = transform;
+        _pijlPlaceHolder = gameObject.GetNamedChild("PijlPlaceholder");
+        _pijlPlaceHolder.SetActive(false);
+    }
+    protected override void Grab()
+    {
+        _pijlPlaceHolder.SetActive(true);
+        _oldTransform = transform.localPosition;
     }
     
     protected override void Drop()
     {
-        transform.position = new Vector3(0, 0.0055f, 0);
-        transform.rotation = Quaternion.identity;
-        if (hasArrow)
+        print("Dropped");
+        float speed = Vector3.Distance(_oldTransform, transform.localPosition) * 10; 
+        StartCoroutine(MoveStringBack());
+        _pijlPlaceHolder.SetActive(false);
+        bow.Shoot(transform.GetChild(0).position, speed);
+    }
+
+    IEnumerator MoveStringBack()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        while (transform.localPosition != _oldTransform)
         {
-            GetComponent<Bow>().Shoot();
+            transform.localPosition = Vector3.Lerp(transform.localPosition, _oldTransform, Time.deltaTime * 10);
+            yield return null;
         }
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 }

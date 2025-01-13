@@ -7,19 +7,11 @@ using UnityEngine.EventSystems;
 public class Bow : Weapon
 {
     [SerializeField] private Transform bowString;
-    [SerializeField] private SkinnedMeshRenderer meshRenderer;
-    [SerializeField] private MeshCollider meshCollider;
-
-    protected override void Start()
+    [SerializeField] private GameObject arrow;
+    
+    public void Shoot(Vector3 arrowPosition, float speed)
     {
-        base.Start();
-        Mesh colliderMesh = new Mesh();
-        meshRenderer.BakeMesh(colliderMesh);
-        meshCollider.sharedMesh = null;
-        meshCollider.sharedMesh = colliderMesh;
-    }
-    public void Shoot()
-    {
-        throw new NotImplementedException();
+        GameObject instantiatedArrow = Instantiate(arrow, arrowPosition, Quaternion.identity);
+        instantiatedArrow.GetComponent<ArrowPhysics>().speed = speed;
     }
 }

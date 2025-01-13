@@ -6,8 +6,9 @@ using UnityEngine.Rendering;
 
 public class ArrowPhysics : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
     [SerializeField] private float destroyTime;
+    [SerializeField] private WeaponSO weaponSo;
 
     private void Start()
     {
@@ -24,6 +25,11 @@ public class ArrowPhysics : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
+        }
+        
+        if (other.TryGetComponent(out EnemyHealth health))
+        {
+            health.TakeDamage(weaponSo.damage);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -20,13 +21,13 @@ public struct EnemyCombination
 }
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    public Transform player;
     public static GameManager Instance;
     public int score;
     [HideInInspector] public int livingEnemyAmount;
     [SerializeField] private int maxRooms;
     [SerializeField] private List<GameObject> rooms;
-
+    [SerializeField] private GameObject bossRoom;
     [SerializeField] private GameObject outDoor;
 
     [SerializeField] private RenderTexture renderTexture;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     private Vector3 _finalSpawnPos;
     public List<GameObject> enemies;
-    [SerializeField] private int[] _playerLayers;
+    [SerializeField] private int[] playerLayers;
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject winCanvas;
     [SerializeField] private float canvasDistance;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
     private bool _hasStarted;
 
     
-    public static int[] GetPlayerLayers() => Instance._playerLayers;
+    public static int[] GetPlayerLayers() => Instance.playerLayers;
 
     private void Awake()
     {
@@ -60,12 +61,12 @@ public class GameManager : MonoBehaviour
     {
         GenerateNextRoom();
     }
-
+    
     public void EndBattle()
     {
         if (score >= maxRooms)
         {
-            HandleWinning();
+            GameObject room = Instantiate(bossRoom, _finalSpawnPos, Quaternion.identity);
         }
 
         else

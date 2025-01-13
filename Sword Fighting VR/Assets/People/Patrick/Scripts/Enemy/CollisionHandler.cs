@@ -19,19 +19,16 @@ public class CollisionHandler : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Weapon"))
+        if (other.TryGetComponent(out Weapon w))
         {
-            Weapon weapon = other.gameObject.GetComponent<Weapon>();
-            if (weapon.isEquipped)
+            
+            if (w.isEquipped)
             {
-                _damage = weapon.GetDamage(other);
-                bool ignoresArmor = weapon.IgnoresArmor();
-                if (_damage == 0)
-                {
-                    return;
-                }
-                transform.root.GetComponent<EnemyHealth>().CalculateDamage(type, hasArmor, armorDamageReduction, _damage, ignoresArmor);
-                StartCoroutine(ChangeColor());
+                print("Hit");
+                _damage = w.GetDamage(other);
+                bool ignoresArmor = w.IgnoresArmor();
+                transform.root.GetComponent<EnemyHealth>().TakeDamage(100);
+                // StartCoroutine(ChangeColor());
             }
         }
     }

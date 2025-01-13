@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using Random = Unity.Mathematics.Random;
+
 public enum ColliderType {
     HEAD,
     BODY,
@@ -18,9 +22,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private EnemyStats stats;
     public GameObject ragdoll;
     public bool hasLostLimb;
-    public GameObject[] lostLimbs;
+    public List<GameObject> lostLimbs;
+    private List<GameObject> _losableLimbs = new();
+    private GameObject _limbParent;
+    [SerializeField]
     private void Start()
     {
+        _limbParent = transform.GetChild(0).GetChild(0).gameObject;
+        _limbParent.gameObject.GetChildGameObjects(_losableLimbs);
         _damageModifiers = stats.damageModifiers;
         _health = stats.health;
     }
@@ -41,14 +50,14 @@ public class EnemyHealth : MonoBehaviour
         if (hasArmor && !ignoresArmor) damage = Mathf.RoundToInt(damage * armorDamageReduction);
         TakeDamage(damage);
     }
-
+#if UNITY_EDITOR
     [ContextMenu("Take Damage")]
     private void ContextMenuDamage()
     {
         TakeDamage(10000);
     }
-    
-    private void TakeDamage(int damage)
+    #endif
+    public void TakeDamage(int damage)
     {
         _health -= damage;
 
@@ -56,14 +65,32 @@ public class EnemyHealth : MonoBehaviour
         if (_health <= 0)
         {
             GetComponent<EnemyAI>().ChanceToSpawnItems();
-            Destroy(gameObject);
-            //RagdollManager.SpawnRagdoll(this);
+            LoseRandomLimb();
+            RagdollManager.SpawnRagdoll(this, gameObject);
         }
+    }
+    [ContextMenu("Lose random limb")]
+    public void LoseRandomLimb()
+    {
+        var limbToLose = _losableLimbs[UnityEngine.Random.Range(0, _losableLimbs.Count)];
+        print(limbToLose.name);
+        LoseLimb(limbToLose);
     }
 
     public void LoseLimb(GameObject limb)
     {
-        gameObject.GetNamedChild(limb.name).transform.SetParent(GameObject.Find("LostLimbs").transform);
+        print(limb.name);
+        gameObject.transform.GetChild(0).gameObject.GetNamedChild(limb.name).transform.SetParent(null);
+        limb.GetComponent<SkinnedMeshRenderer>().rootBone = null;
+        limb.GetComponent<SkinnedMeshRenderer>().bones = null;
+        limb.AddComponent<Rigidbody>();
+        limb.AddComponent<BoxCollider>();
+        lostLimbs.Add(limb);
+        print(lostLimbs.Count);
+        foreach (var go in lostLimbs)
+        {
+            print(limb.name);
+        }
         TakeDamage(_health);
     } 
 }

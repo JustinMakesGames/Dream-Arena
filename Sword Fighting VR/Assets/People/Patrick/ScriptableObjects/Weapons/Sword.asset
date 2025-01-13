@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c9a09cd545aae44a828128b11482e8, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 50
   ignoresArmor: 0
+  timePunishment: 0
