@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,6 +28,8 @@ public class RagdollManager : MonoBehaviour
         foreach (Rigidbody rb in oldEnemy.GetComponentsInChildren<Rigidbody>())
         {
             rb.isKinematic = false;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
         Destroy(oldEnemy.GetComponent<CollisionHandler>());
         Destroy(oldEnemy.GetComponent<EnemyAI>());
@@ -34,7 +38,6 @@ public class RagdollManager : MonoBehaviour
         Destroy(oldEnemy.GetComponent<NavMeshAgent>());
         _ragdolls.Add(oldEnemy);
     }
-    
     IEnumerator CleanRagdolls()
     {
         while (true)
