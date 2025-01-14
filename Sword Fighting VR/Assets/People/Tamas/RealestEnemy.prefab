@@ -1395,6 +1395,8 @@ MonoBehaviour:
   jumpForce: 1
   knockbackDuration: 0.5
   item: {fileID: 4383553249133825269, guid: a829464a9676504429e93a10e4e1e6af, type: 3}
+  debugSphere: {fileID: 0}
+  shouldDebug: 0
 --- !u!114 &1503316506373022887
 MonoBehaviour:
   m_ObjectHideFlags: 0

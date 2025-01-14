@@ -23,6 +23,7 @@ public class DestructibleObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (_layers == null) return;
         if (_layers.Contains(other.gameObject.layer)) return;
         if (GetComponent<Rigidbody>().velocity.magnitude > minVelocityToBreak)
         {

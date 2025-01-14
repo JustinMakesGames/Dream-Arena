@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 232236518838541506}
   - component: {fileID: 2964310129486405001}
   - component: {fileID: 4277474540165654347}
-  - component: {fileID: 6164172639192356918}
   m_Layer: 0
   m_Name: Sword(Clone)
   m_TagString: Weapon
@@ -134,46 +133,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.29306027, y: 1.3024881, z: 0.0553104}
   m_Center: {x: 0, y: 0.4796741, z: -0.0000073863193}
---- !u!114 &6164172639192356918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3306978169705738199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f47198bd1bbc15842b7292c9d4ed3656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputActionPosition:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Input Action Position
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 3601029c-a04d-417c-aab7-aff8f6f58781
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  inputActionRotation:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Input Action Rotation
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 40a0b21f-c348-46e1-9a98-466f539c4a88
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  controller: {fileID: 0}
-  weaponSo: {fileID: 11400000, guid: 05b5346d877bcd747a7397f47d548fef, type: 2}
-  isEquipped: 0
-  hand: {fileID: 0}
 --- !u!1 &9178449891354119615
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +198,8 @@ MonoBehaviour:
   jumpForce: 1
   knockbackDuration: 0.5
   item: {fileID: 4383553249133825269, guid: a829464a9676504429e93a10e4e1e6af, type: 3}
+  debugSphere: {fileID: 0}
+  shouldDebug: 0
 --- !u!114 &1850097977459907159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +316,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 3968
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -549,7 +510,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3551398087122131175}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2aa261851a74ba847b090928bd7f5089,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1456090440294364631}
   m_SourcePrefab: {fileID: 100100000, guid: 2aa261851a74ba847b090928bd7f5089, type: 3}
 --- !u!4 &1818903954028673372 stripped
 Transform:
@@ -563,6 +528,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4601677598426099744}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3683127234937376113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2aa261851a74ba847b090928bd7f5089,
+    type: 3}
+  m_PrefabInstance: {fileID: 4601677598426099744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1456090440294364631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683127234937376113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494bf20abce81be4c8566c27ea7a5cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4059652121131358155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2aa261851a74ba847b090928bd7f5089,
