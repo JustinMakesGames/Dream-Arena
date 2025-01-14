@@ -45,6 +45,12 @@ public class EnemyAI : MonoBehaviour
 
     private Animator _animator;
 
+
+    //debugging
+    [SerializeField] private Transform debugSphere;
+    [SerializeField] private bool shouldDebug;
+
+
     public enum EnemyBehaviourStates
     {
         Idle,
@@ -75,6 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     protected void Update()
     {
+        
         UpdateAnimation();
         CheckForAttackDistance();
         switch (enemyState)
@@ -101,6 +108,7 @@ public class EnemyAI : MonoBehaviour
 
     protected void SwitchOnce()
     {
+        StopAllCoroutines();
         _agent.speed = 5f;
         switch (enemyState)
         {
@@ -213,7 +221,8 @@ public class EnemyAI : MonoBehaviour
     protected virtual void StartPreparingAttack()
     {
         NavMeshAgentStatsChange();
-        
+
+        StartCoroutine(PlayAttackAnimation());
         changeAngle = CalculateFirstPosition();
         _newAttackDestination = CalculatePositionToGo();
         _agent.SetDestination(_newAttackDestination);
@@ -228,7 +237,6 @@ public class EnemyAI : MonoBehaviour
 
     protected virtual void HandlePlayerAttacking()
     {
-        
         MoveAroundPlayer();
         CheckIfPlayerIsGone();
     }
@@ -275,8 +283,7 @@ public class EnemyAI : MonoBehaviour
     protected void CheckForAttackDistance()
     {
         if (Vector3.Distance(transform.position, _player.position) < playerRange && !isAttacking)
-        {
-            _animator.SetTrigger("Attack");
+        {           
             isAttacking = true;  
         }
 
@@ -318,8 +325,24 @@ public class EnemyAI : MonoBehaviour
         {
             transform.position = hit.position;
         }
+    }
 
-
+    private IEnumerator PlayAttackAnimation()
+    {
+        while (true)
+        {
+            _animator.SetTrigger("Attack");
+            yield return new WaitForSeconds(1f);
+        }
+    }
+    public void HandleAttackAnimation()
+    {
+        print("Played the animation event");
+        if (Vector3.Distance(transform.position, _player.position) < 1f)
+        {
+            
+            _player.GetComponent<PlayerHealth>().TakeDamage(enemyStats.damage);
+        }
     }
 
     public void ChanceToSpawnItems()
