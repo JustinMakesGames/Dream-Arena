@@ -27,7 +27,7 @@ public class CollisionHandler : MonoBehaviour
                 print("Hit");
                 _damage = w.GetDamage(other);
                 bool ignoresArmor = w.IgnoresArmor();
-                transform.root.GetComponent<EnemyHealth>().TakeDamage(100);
+                transform.root.GetComponent<EnemyHealth>().TakeDamage(_damage);
                 // StartCoroutine(ChangeColor());
             }
         }

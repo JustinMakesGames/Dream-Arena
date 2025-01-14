@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RagdollManager : MonoBehaviour
 {
@@ -20,25 +21,18 @@ public class RagdollManager : MonoBehaviour
         StartCoroutine(CleanRagdolls());
     }
 
-    public static void SpawnRagdoll(EnemyHealth enemy, GameObject oldEnemy)
+    public static void SpawnRagdoll(GameObject oldEnemy)
     {
-        GameObject ragdoll = Instantiate(enemy.ragdoll, enemy.transform.position, enemy.transform.rotation);
-        foreach (Rigidbody rb in ragdoll.GetComponentsInChildren<Rigidbody>())
+        foreach (Rigidbody rb in oldEnemy.GetComponentsInChildren<Rigidbody>())
         {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = false;
         }
-        ragdoll.transform.SetParent(null);
-        print("Instantiated " + ragdoll.name);
-        if (enemy.hasLostLimb)
-        {
-            foreach (GameObject lostLimb in enemy.lostLimbs)
-            {
-                Destroy(ragdoll.transform.GetChild(0).gameObject.GetNamedChild(lostLimb.name));
-            }
-        }
-        _ragdolls.Add(ragdoll);
-        Destroy(oldEnemy);
+        Destroy(oldEnemy.GetComponent<CollisionHandler>());
+        Destroy(oldEnemy.GetComponent<EnemyAI>());
+        Destroy(oldEnemy.GetComponent<EnemyHealth>());
+        Destroy(oldEnemy.GetComponentInChildren<Animator>());
+        Destroy(oldEnemy.GetComponent<NavMeshAgent>());
+        _ragdolls.Add(oldEnemy);
     }
     
     IEnumerator CleanRagdolls()

@@ -329,7 +329,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
-  weaponSo: {fileID: 0}
+  weaponSo: {fileID: 11400000, guid: bed39a81dc767c747b7fb52342b3b84e, type: 2}
   isEquipped: 0
   hand: {fileID: 0}
   bowString: {fileID: 0}
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  hasArrow: 0
+  hasArrow: 1
   bow: {fileID: 3787812023436173596}
 --- !u!4 &5409201951497067978 stripped
 Transform:

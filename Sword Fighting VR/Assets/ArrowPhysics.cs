@@ -12,11 +12,11 @@ public class ArrowPhysics : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, destroyTime);
+        Destroy(gameObject.transform.parent.gameObject, destroyTime);
     }
     private void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.parent.Translate(Vector3.forward * speed * Time.deltaTime);
         
     }
 
@@ -24,7 +24,7 @@ public class ArrowPhysics : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Destroy(gameObject.transform.parent.gameObject);
         }
         
         if (other.TryGetComponent(out EnemyHealth health))

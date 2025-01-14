@@ -21,9 +21,12 @@ public class Weapon : MonoBehaviour
         "Right_Leg",
     };
     
+    [Header("Controllers")]
     public InputActionProperty inputActionPosition;
     public InputActionProperty inputActionRotation;
     public ActionBasedController controller;
+    [SerializeField] private Transform hand;
+    [Header("Weapon Information")]
     public WeaponSO weaponSo;
     //Make sure these variables can only be accessed from classes which derive from this one,
     //while still making sure other scripts can get the values.
@@ -33,7 +36,7 @@ public class Weapon : MonoBehaviour
     public int GetDamage() => baseDamage;
     public bool isEquipped;
 
-    [SerializeField] private Transform hand;
+
     private UnityEngine.XR.InputDevice _controller;
 
     private Vector3 previousPosition;

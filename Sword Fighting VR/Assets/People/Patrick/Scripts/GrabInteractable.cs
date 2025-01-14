@@ -16,6 +16,10 @@ public class GrabInteractable : XRGrabInteractable
     {
         base.Grab();
         Physics.IgnoreLayerCollision(gameObject.layer, GetLayerMask(), true);
+        if (TryGetComponent(out Rigidbody rb))
+        {
+            rb.useGravity = false;
+        }
     }
     private LayerMask GetLayerMask()
     {
@@ -24,8 +28,8 @@ public class GrabInteractable : XRGrabInteractable
             XRBaseInteractor interactor = firstInteractorSelecting as XRBaseInteractor;
             if (interactor != null)
             {
-                _layerMask = interactor.gameObject.layer;
-                return _layerMask;
+                return interactor.gameObject.layer;
+                
             }
         }
         return LayerMask.GetMask("Ignore this layer");
@@ -35,6 +39,10 @@ public class GrabInteractable : XRGrabInteractable
     {
         base.Drop();
         StartCoroutine(WaitForDrop(_layerMask));
+        if (TryGetComponent(out Rigidbody rb))
+        {
+            rb.useGravity = true;
+        }
     }
 
     private IEnumerator WaitForDrop(LayerMask mask)

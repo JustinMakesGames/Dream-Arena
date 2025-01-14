@@ -6,6 +6,7 @@ public class MenuFollower : MonoBehaviour
 {
     [SerializeField] private float canvasDistance;
     private Transform cam;
+    
 
     private void Start()
     {

@@ -6,12 +6,17 @@ using UnityEngine.EventSystems;
 
 public class Bow : Weapon
 {
-    [SerializeField] private Transform bowString;
     [SerializeField] private GameObject arrow;
     
-    public void Shoot(Vector3 arrowPosition, float speed)
+    [ContextMenu("Shoot")]
+    public void TestShoot()
     {
-        GameObject instantiatedArrow = Instantiate(arrow, arrowPosition, Quaternion.identity);
-        instantiatedArrow.GetComponent<ArrowPhysics>().speed = speed;
+        Shoot(transform.position, 5, transform.rotation);
+    }
+    
+    public void Shoot(Vector3 arrowPosition, float speed, Quaternion arrowRotation)
+    {
+        GameObject instantiatedArrow = Instantiate(arrow, arrowPosition, arrowRotation);
+        instantiatedArrow.GetComponentInChildren<ArrowPhysics>().speed = speed;
     }
 }

@@ -8,18 +8,18 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class BowStringInteractable : GrabInteractable
 {
     private Vector3 _oldTransform;
-    [SerializeField] private bool hasArrow;
+    private Quaternion _baseRotation;
     [SerializeField] private Bow bow;
-    private GameObject _pijlPlaceHolder;
+    [SerializeField] private GameObject arrowPlaceHolder;
 
     void Start()
     {
-        _pijlPlaceHolder = gameObject.GetNamedChild("PijlPlaceholder");
-        _pijlPlaceHolder.SetActive(false);
+        _baseRotation = arrowPlaceHolder.transform.localRotation;
+        arrowPlaceHolder.SetActive(false);
     }
     protected override void Grab()
     {
-        _pijlPlaceHolder.SetActive(true);
+        arrowPlaceHolder.SetActive(true);
         _oldTransform = transform.localPosition;
     }
     
@@ -28,8 +28,10 @@ public class BowStringInteractable : GrabInteractable
         print("Dropped");
         float speed = Vector3.Distance(_oldTransform, transform.localPosition) * 10; 
         StartCoroutine(MoveStringBack());
-        _pijlPlaceHolder.SetActive(false);
-        bow.Shoot(transform.GetChild(0).position, speed);
+        arrowPlaceHolder.SetActive(false);
+        bow.Shoot(transform.GetChild(1).position, speed, arrowPlaceHolder.transform.localRotation);
+        arrowPlaceHolder.transform.localRotation = _baseRotation;
+        
     }
 
     IEnumerator MoveStringBack()
