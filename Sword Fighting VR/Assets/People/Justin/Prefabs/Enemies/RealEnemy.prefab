@@ -202,10 +202,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4523796834539446884}
     m_Modifications:
+    - target: {fileID: 141997206063329637, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 393311983652545943, guid: dfd9a8249d38ea24c9a4b2104e450326,
         type: 3}
       propertyPath: m_Name
       value: Left_Leg
+      objectReference: {fileID: 0}
+    - target: {fileID: 395994937629929534, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 518890618233339062, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 527458263750225964, guid: dfd9a8249d38ea24c9a4b2104e450326,
         type: 3}
@@ -262,10 +277,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1418402578127789977, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537476527327019474, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804594811037701198, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402581660214847778, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3402581660214847778, guid: dfd9a8249d38ea24c9a4b2104e450326,
         type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430447840191901462, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680207428417351046, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536149247117080875, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4972299766470531468, guid: dfd9a8249d38ea24c9a4b2104e450326,
         type: 3}
@@ -307,10 +357,40 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ce06ab5e8023eaa45aedb37ec6aa1703, type: 2}
+    - target: {fileID: 6722171242478669359, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074000676432213408, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456020790982519514, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686236692521771239, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807770417598846313, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7926032010668067309, guid: dfd9a8249d38ea24c9a4b2104e450326,
         type: 3}
       propertyPath: m_Name
       value: Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108042309611252192, guid: dfd9a8249d38ea24c9a4b2104e450326,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8483771798981988173, guid: dfd9a8249d38ea24c9a4b2104e450326,
         type: 3}

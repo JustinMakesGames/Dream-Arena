@@ -12,6 +12,7 @@ public enum ColliderType {
     ARM,
     LEG
 }
+
 public class EnemyHealth : MonoBehaviour
 {
     //We don't want scripts to be able to edit the health directly,
@@ -89,7 +90,8 @@ public class EnemyHealth : MonoBehaviour
         _limbParent.GetNamedChild(limb.name).transform.SetParent(null);
         lostLimbs.Add(limb);
         print(lostLimbs.Count);
-        Destroy(gameObject.GetNamedChild(limb.name));
+        //Destroy related armor piece
+        Destroy(gameObject.transform.GetChild(0).gameObject.GetNamedChild(limb.name));
         foreach (var go in lostLimbs)
         {
             print(go.name);

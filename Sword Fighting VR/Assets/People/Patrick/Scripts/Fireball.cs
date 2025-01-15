@@ -7,7 +7,9 @@ public class Fireball : MonoBehaviour
 {
     [SerializeField] private int damage;
     private SphereCollider _sphereCollider;
+    private GameObject _boss;
     private GameObject _target;
+    private bool _isTargetingBoss = false;
     [SerializeField] private int speed;
 
     private void Start()
@@ -23,6 +25,21 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.TryGetComponent(out Weapon w))
+        {
+            if (w.isEquipped)
+            {
+                _target = _boss;
+            }
+        }
+
+        if (_isTargetingBoss)
+        {
+            if (other.gameObject.TryGetComponent(out Boss boss))
+            {
+                boss.TakeDamage(damage);
+            }
+        }
         if (other.gameObject.TryGetComponent(out PlayerHealth health))
         {
             health.TakeDamage(damage);
@@ -40,5 +57,6 @@ public class Fireball : MonoBehaviour
                 }
             }
         }
+        
     }
 }

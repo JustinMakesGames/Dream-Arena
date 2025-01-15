@@ -15,10 +15,8 @@ public class Boomerang : Weapon
     {
         return base.GetDamage();
     }
-
-
     
-    void OnThrow()
+    public void OnThrow()
     {
         Vector3 destination = transform.position + 
                               (transform.forward * rb.velocity.magnitude * 10);

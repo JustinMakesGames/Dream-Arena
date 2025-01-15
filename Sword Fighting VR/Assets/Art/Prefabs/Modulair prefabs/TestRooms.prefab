@@ -759,9 +759,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
+  hand: {fileID: 0}
   weaponSo: {fileID: 11400000, guid: 05b5346d877bcd747a7397f47d548fef, type: 2}
   isEquipped: 0
-  hand: {fileID: 0}
 --- !u!114 &4638225764099876485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,9 +1632,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &7287037879946796473
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1935,9 +1935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &7324001537293423415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2090,9 +2090,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &6406599274791893995
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2245,9 +2245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &4741525555340026974
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2542,9 +2542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &7576770415612451682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3283,9 +3283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &2961619536772246346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3432,9 +3432,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &9085171398484683288
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3661,9 +3661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &2046352487260137345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4828,9 +4828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &4805529786833365818
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5433,9 +5433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &2994915542279713324
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6180,9 +6180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &2040466940504171341
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7421,9 +7421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f31f3a5d5d97d448cb96e07063207f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutCascades: 1
-  explodeForce: 0
-  minVelocityToBreak: 0
+  cutCascades: 3
+  explodeForce: 1
+  minVelocityToBreak: 1
 --- !u!54 &540222003316020985
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -865,9 +865,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
+  hand: {fileID: 0}
   weaponSo: {fileID: 11400000, guid: 83e15dcc7bb9d644c8563c73686c07d5, type: 2}
   isEquipped: 1
-  hand: {fileID: 0}
 --- !u!114 &118491411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6198,17 +6198,17 @@ PrefabInstance:
     - target: {fileID: 6434993904312237693, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.49619
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6434993904312237693, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.49619
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6434993904312237693, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.49619
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6434993904312237693, guid: c86c7de9c7b20c34d9f66f7d954d4647,
         type: 3}
@@ -6517,9 +6517,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
+  hand: {fileID: 0}
   weaponSo: {fileID: 11400000, guid: 83e15dcc7bb9d644c8563c73686c07d5, type: 2}
   isEquipped: 1
-  hand: {fileID: 0}
 --- !u!114 &1230242772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8540,7 +8540,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10141,6 +10141,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 870275585}
     m_Modifications:
+    - target: {fileID: 1236874069262729591, guid: 44160233ebd5ec747b5d82494ac05138,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.2001754
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236874069262729591, guid: 44160233ebd5ec747b5d82494ac05138,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.00000093221263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236874069262729591, guid: 44160233ebd5ec747b5d82494ac05138,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.10008866
+      objectReference: {fileID: 0}
     - target: {fileID: 5597354590352476788, guid: 44160233ebd5ec747b5d82494ac05138,
         type: 3}
       propertyPath: scene
