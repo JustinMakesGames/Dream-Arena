@@ -30,6 +30,7 @@ public class Fireball : MonoBehaviour
             if (w.isEquipped)
             {
                 _target = _boss;
+                _isTargetingBoss = true;
             }
         }
 
