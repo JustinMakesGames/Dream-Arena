@@ -2433,6 +2433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraight02
       objectReference: {fileID: 0}
+    - target: {fileID: 6458788027718569660, guid: 050cd45b78ffa644f965454797dce895,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2908,6 +2913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8587504022404623666, guid: 4bfacea13e26f2d488357f18a1363348,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8964170710882334600, guid: 4bfacea13e26f2d488357f18a1363348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3031,6 +3041,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraight02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458788027718569660, guid: 050cd45b78ffa644f965454797dce895,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3780,6 +3795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: windowWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492692909576783350, guid: 60fcdad2a61488a4c9cdd5e42397f04a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4645,6 +4665,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraight02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6458788027718569660, guid: 050cd45b78ffa644f965454797dce895,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4972,6 +4997,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 8587504022404623666, guid: 4bfacea13e26f2d488357f18a1363348,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8964170710882334600, guid: 4bfacea13e26f2d488357f18a1363348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5267,6 +5297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587504022404623666, guid: 4bfacea13e26f2d488357f18a1363348,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 8964170710882334600, guid: 4bfacea13e26f2d488357f18a1363348,
         type: 3}
@@ -5644,6 +5679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587504022404623666, guid: 4bfacea13e26f2d488357f18a1363348,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 8964170710882334600, guid: 4bfacea13e26f2d488357f18a1363348,
         type: 3}
@@ -6065,6 +6105,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraight02
       objectReference: {fileID: 0}
+    - target: {fileID: 6458788027718569660, guid: 050cd45b78ffa644f965454797dce895,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6466,6 +6511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 8587504022404623666, guid: 4bfacea13e26f2d488357f18a1363348,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8964170710882334600, guid: 4bfacea13e26f2d488357f18a1363348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6589,6 +6639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: windowWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492692909576783350, guid: 60fcdad2a61488a4c9cdd5e42397f04a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6947,6 +7002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraight02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458788027718569660, guid: 050cd45b78ffa644f965454797dce895,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

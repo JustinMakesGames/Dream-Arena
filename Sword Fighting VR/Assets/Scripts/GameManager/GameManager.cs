@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform spawnPlace;
     private bool _hasStarted;
 
+    private bool _isBossRoom;
+
     
     public static int[] GetPlayerLayers() => Instance.playerLayers;
 
@@ -59,32 +61,42 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateNextRoom();
+        int randomRoom = UnityEngine.Random.Range(0, rooms.Count);
+        GenerateNextRoom(rooms[randomRoom]);
     }
     
     public void EndBattle()
     {
-        if (score >= maxRooms)
+        if (_isBossRoom)
         {
-            GameObject room = Instantiate(bossRoom, _finalSpawnPos, Quaternion.identity);
+            HandleWinning();
+        }
+
+        else if (score >= maxRooms)
+        {
+
+            GenerateNextRoom(bossRoom);
+            _isBossRoom = true;
         }
 
         else
         {
             score++;
-            GenerateNextRoom();
+
+            int randomRoom = UnityEngine.Random.Range(0, rooms.Count);
+            GenerateNextRoom(rooms[randomRoom]);
         }
         
     }
 
 
 
-    private void GenerateNextRoom()
+    private void GenerateNextRoom(GameObject room)
     {
         
-        int randomRoom = UnityEngine.Random.Range(0, rooms.Count);
+        
 
-        GameObject newRoom = Instantiate(rooms[randomRoom], _finalSpawnPos, Quaternion.identity);
+        GameObject newRoom = Instantiate(room, _finalSpawnPos, Quaternion.identity);
 
         _finalSpawnPos = _finalSpawnPos == spawnPos1.position ? spawnPos2.position : spawnPos1.position;
 
@@ -125,7 +137,7 @@ public class GameManager : MonoBehaviour
         List<GameObject> deadEnemies = new List<GameObject>();
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i] == null)
+            if (enemies[i].GetComponent<EnemyHealth>() == null)
             {
                 deadEnemies.Add(enemies[i]);
             }

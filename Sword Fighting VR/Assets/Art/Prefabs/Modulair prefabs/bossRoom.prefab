@@ -624,6 +624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -697,6 +702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
@@ -1009,6 +1019,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1082,6 +1097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
@@ -1320,6 +1340,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1482,6 +1507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
@@ -1868,6 +1898,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2105,6 +2140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2178,6 +2218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -2327,6 +2372,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2475,6 +2525,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2622,6 +2677,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
@@ -2862,8 +2922,6 @@ MonoBehaviour:
     type: 3}
   isAlive: 1
   health: 100
-  surface: {fileID: 204922598135211892}
-  teleportDistance: 30
 --- !u!136 &4017551312071336254
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2988,6 +3046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -3759,6 +3822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3832,6 +3900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -4054,6 +4127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -4514,6 +4592,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4676,6 +4759,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -5003,6 +5091,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5314,6 +5407,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5388,6 +5486,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5461,6 +5564,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -5936,6 +6044,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6010,6 +6123,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6083,6 +6201,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -6247,6 +6370,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6321,6 +6449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6394,6 +6527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
@@ -6825,6 +6963,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6973,6 +7116,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7047,6 +7195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallStraightLP1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8237356628575349578, guid: 028374084d252c14682d2126328c9618,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
+      objectReference: {fileID: 0}
     - target: {fileID: 8726613341843304944, guid: 028374084d252c14682d2126328c9618,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7120,6 +7273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WallStraightLP1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137186142083976816, guid: 568d025a67f35e14dba69f85e1786768,
+        type: 3}
+      propertyPath: m_TagString
+      value: ValidWall
       objectReference: {fileID: 0}
     - target: {fileID: 7514168394429617354, guid: 568d025a67f35e14dba69f85e1786768,
         type: 3}

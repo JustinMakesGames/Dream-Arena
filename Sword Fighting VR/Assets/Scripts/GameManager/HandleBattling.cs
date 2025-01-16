@@ -26,7 +26,11 @@ public class HandleBattling : MonoBehaviour
     {
         for (int i = 0; i < wallFolder.childCount; i++)
         {
-            _walls.Add(wallFolder.GetChild(i));
+            if (wallFolder.GetChild(i).CompareTag("ValidWall"))
+            {
+                _walls.Add(wallFolder.GetChild(i));
+            }
+            
         }
         int randomWall = Random.Range(0, _walls.Count);
 
@@ -36,6 +40,9 @@ public class HandleBattling : MonoBehaviour
         GameObject cloneDoor = Instantiate(door, Vector3.zero, _walls[randomWall].rotation);
         cloneDoor.transform.position = randomPos;
         cloneDoor.transform.parent = _walls[randomWall];
+
+        
+        
     }
 
     private Vector3 SearchRandomDoorPosition(int index, bool isIndoor)

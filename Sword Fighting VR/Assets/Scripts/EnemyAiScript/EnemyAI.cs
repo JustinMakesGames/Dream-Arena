@@ -338,7 +338,7 @@ public class EnemyAI : MonoBehaviour
     public void HandleAttackAnimation()
     {
         print("Played the animation event");
-        if (Vector3.Distance(transform.position, _player.position) < 1f)
+        if (Vector3.Distance(transform.position, _player.position) < 3f)
         {
             
             _player.GetComponent<PlayerHealth>().TakeDamage(enemyStats.damage);

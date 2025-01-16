@@ -88,6 +88,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: kast
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2cfbe70e03aeb14fabb848110d37729,
+        type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 6745302439343835087, guid: a2cfbe70e03aeb14fabb848110d37729,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

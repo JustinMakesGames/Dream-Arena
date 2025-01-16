@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnTick : MonoBehaviour
 {
-    public  delegate void OnTicker();
+    public delegate void OnTicker();
     public event OnTicker onTickEvent;
     public float intervalTime;
 

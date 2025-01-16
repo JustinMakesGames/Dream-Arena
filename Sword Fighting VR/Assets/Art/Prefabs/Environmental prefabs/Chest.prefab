@@ -5138,6 +5138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cae8e49b503ae1c46add50f9c15e6c58,
+        type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 2355982399387309400, guid: cae8e49b503ae1c46add50f9c15e6c58,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
