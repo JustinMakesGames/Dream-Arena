@@ -329,10 +329,9 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 0}
   controller: {fileID: 0}
+  hand: {fileID: 0}
   weaponSo: {fileID: 11400000, guid: bed39a81dc767c747b7fb52342b3b84e, type: 2}
   isEquipped: 0
-  hand: {fileID: 0}
-  bowString: {fileID: 0}
   arrow: {fileID: 7156414821946455989, guid: 2a810087963c7c043aa00aab20161671, type: 3}
 --- !u!65 &9191634703280327006
 BoxCollider:
@@ -723,8 +722,8 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  hasArrow: 1
   bow: {fileID: 3787812023436173596}
+  arrowPlaceHolder: {fileID: 8074182198826439850}
 --- !u!4 &5409201951497067978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2484921068739079471, guid: b288210d601609347b959c5da43ce77e,
@@ -827,6 +826,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb706d62ac5249341b1721ee5706cacf, type: 3}
+--- !u!1 &8074182198826439850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1215118680481058748, guid: cb706d62ac5249341b1721ee5706cacf,
+    type: 3}
+  m_PrefabInstance: {fileID: 6976561730345687830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8882947031151496720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1988102483543823622, guid: cb706d62ac5249341b1721ee5706cacf,

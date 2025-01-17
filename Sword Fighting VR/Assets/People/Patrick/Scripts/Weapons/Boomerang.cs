@@ -19,7 +19,7 @@ public class Boomerang : Weapon
     public void OnThrow()
     {
         Vector3 destination = transform.position + 
-                              (transform.forward * rb.velocity.magnitude * 10);
+                              (transform.forward * rb.velocity.magnitude * 20);
         StartCoroutine(Throw(transform.position, destination));
     }
 

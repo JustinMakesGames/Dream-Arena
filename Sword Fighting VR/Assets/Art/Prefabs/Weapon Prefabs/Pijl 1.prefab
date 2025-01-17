@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9104664108211989170}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pijl 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,6 +115,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pijl
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 628663f4f50aea34bbeede119e67ae73,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -170,7 +175,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 896
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -191,7 +196,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 896
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -218,7 +223,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 896
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0

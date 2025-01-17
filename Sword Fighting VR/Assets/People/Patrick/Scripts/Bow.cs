@@ -11,12 +11,18 @@ public class Bow : Weapon
     [ContextMenu("Shoot")]
     public void TestShoot()
     {
-        Shoot(transform.position, 5, transform.rotation);
+        Shoot(transform.position);
     }
     
-    public void Shoot(Vector3 arrowPosition, float speed, Quaternion arrowRotation)
+    public void Shoot(Vector3 arrowPosition)
     {
-        GameObject instantiatedArrow = Instantiate(arrow, arrowPosition, arrowRotation);
-        instantiatedArrow.GetComponentInChildren<ArrowPhysics>().speed = speed;
+        if (Physics.Raycast(arrowPosition, transform.forward, out RaycastHit hit, Mathf.Infinity))
+        {
+            GameObject go = hit.collider.gameObject;
+            if (go.TryGetComponent(out PlayerHealth p))
+            {
+                p.TakeDamage(baseDamage);
+            }
+        }
     }
 }

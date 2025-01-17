@@ -29,7 +29,7 @@ public class BowStringInteractable : GrabInteractable
         float speed = Vector3.Distance(_oldTransform, transform.localPosition) * 10; 
         StartCoroutine(MoveStringBack());
         arrowPlaceHolder.SetActive(false);
-        bow.Shoot(transform.GetChild(1).position, speed, arrowPlaceHolder.transform.localRotation);
+        bow.Shoot(transform.GetChild(1).position);
         arrowPlaceHolder.transform.localRotation = _baseRotation;
         
     }
