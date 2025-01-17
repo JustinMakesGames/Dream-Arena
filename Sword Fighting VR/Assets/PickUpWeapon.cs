@@ -29,6 +29,9 @@ public class PickUpWeapon : XRGrabInteractable
         GetComponent<Weapon>().isEquipped = true;
         base.OnSelectEntered(args);
         Physics.IgnoreLayerCollision(gameObject.layer, args.interactorObject.transform.gameObject.layer, true);
+
+        transform.parent = args.interactorObject.transform.root;
+        
         
     }
 
@@ -49,6 +52,8 @@ public class PickUpWeapon : XRGrabInteractable
             args.interactorObject.transform.root.GetChild(2).GetComponent<WeaponManager>().DetachWeapon();
         }
         GetComponent<Weapon>().isEquipped = false;
+
+        transform.parent = null;
         base.OnSelectExited(args);
         StartCoroutine(WaitForDrop(args.interactorObject.transform.gameObject.layer));
     }

@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
         List<GameObject> deadEnemies = new List<GameObject>();
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i].GetComponent<EnemyHealth>() == null)
+            if (enemies[i] == null || enemies[i].GetComponent<EnemyHealth>() == null)
             {
                 deadEnemies.Add(enemies[i]);
             }

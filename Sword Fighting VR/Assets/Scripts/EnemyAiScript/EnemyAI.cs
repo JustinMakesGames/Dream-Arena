@@ -305,10 +305,7 @@ public class EnemyAI : MonoBehaviour
         _agent.enabled = false;
         Vector3 direction = (transform.position - _player.position).normalized;
         direction.y = jumpForce;
-        print("jumped");
         _rb.isKinematic = false;
-        _rb.AddForce(direction * knockbackForce, ForceMode.VelocityChange);
-        print(direction * knockbackForce);
 
         Invoke(nameof(ResetKnockback), knockbackDuration);
 

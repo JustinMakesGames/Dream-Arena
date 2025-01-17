@@ -57,8 +57,8 @@ public class Boss : MonoBehaviour
             };
             yield return new WaitForSeconds(_speed);
             Instantiate(fireball, transform.position, transform.rotation);
-            transform.position = GetRandomPosition();
-            transform.LookAt(GameManager.Instance.player.position);
+            transform.parent.position = GetRandomPosition();
+            transform.parent.LookAt(GameManager.Instance.player.position);
         }
     }
 

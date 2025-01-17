@@ -68,6 +68,7 @@ public class Weapon : MonoBehaviour
 
     private void HittingTimePunishment()
     {
+        
         if (_isHit)
         {
             _time += Time.deltaTime;
@@ -96,7 +97,7 @@ public class Weapon : MonoBehaviour
             int damage = CalculateDamage(velocity.magnitude, weaponSo.damage);
             return damage;
         }
-        return 0;
+        return weaponSo.damage;
     }
 
     private int CalculateDamage(float velocityMagnitude, int baseDamage)
@@ -114,8 +115,6 @@ public class Weapon : MonoBehaviour
                 multiplier = 3;
                 break;
         }
-
-        print("VelocityMagnitude: " + velocity.magnitude);
         int damage = baseDamage * multiplier;
 
         return damage;

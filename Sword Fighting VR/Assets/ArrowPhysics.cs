@@ -29,7 +29,7 @@ public class ArrowPhysics : MonoBehaviour
         
         if (other.TryGetComponent(out EnemyHealth health))
         {
-            health.TakeDamage(weaponSo.damage);
+            health.TakeDamage(weaponSo.damage, other.transform.position);
         }
     }
 }

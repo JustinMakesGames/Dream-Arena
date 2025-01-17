@@ -84,6 +84,8 @@ MonoBehaviour:
   hasLostLimb: 0
   lostLimbs: []
   losableLimbs: []
+  bloodParticles: {fileID: 1500791905825348244, guid: b6144ef3863f6474abd77e8dc4865e6b,
+    type: 3}
 --- !u!114 &6556132552167291189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right_Leg
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 273650645359843025, guid: dfd9a8249d38ea24c9a4b2104e450326, type: 3}
+    - {fileID: 6856411823082116946, guid: dfd9a8249d38ea24c9a4b2104e450326, type: 3}
+    - {fileID: 7622315285431752509, guid: dfd9a8249d38ea24c9a4b2104e450326, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

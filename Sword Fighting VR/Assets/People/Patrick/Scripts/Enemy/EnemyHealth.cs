@@ -29,13 +29,17 @@ public class EnemyHealth : MonoBehaviour
     public List<GameObject> losableLimbs = new();
     private GameObject _limbParent;
     private bool _dead = false;
-    [SerializeField]
+    [SerializeField] private GameObject bloodParticles;
     private void Start()
     {
-        _limbParent = transform.GetChild(0).GetChild(0).gameObject;
-        _limbParent.gameObject.GetChildGameObjects(losableLimbs);
-        _damageModifiers = stats.damageModifiers;
-        _health = stats.health;
+        if (transform.GetComponent<EnemyAI>() != null)
+        {
+            _limbParent = transform.GetChild(0).GetChild(0).gameObject;
+            _limbParent.gameObject.GetChildGameObjects(losableLimbs);
+            _damageModifiers = stats.damageModifiers;
+            _health = stats.health;
+        }
+        
     }
 
     public void CalculateDamage(ColliderType colType, bool hasArmor, float armorDamageReduction, int baseDamage, bool ignoresArmor)
@@ -52,31 +56,43 @@ public class EnemyHealth : MonoBehaviour
         });
         //Taking armor into account however how armor works in the future is subject to change.
         if (hasArmor && !ignoresArmor) damage = Mathf.RoundToInt(damage * armorDamageReduction);
-        TakeDamage(damage);
+        TakeDamage(damage, transform.position);
     }
 #if UNITY_EDITOR
     [ContextMenu("Take Damage")]
     private void ContextMenuDamage()
     {
-        TakeDamage(10000);
+        TakeDamage(10000, transform.position);
     }
     #endif
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 bloodPosition)
     {
+        print(transform.name + " has been damaged");
         _health -= damage;
-
-        GetComponent<EnemyAI>().JumpFromDamage();
+        GameObject bloodClone = Instantiate(bloodParticles, bloodPosition, Quaternion.identity);
+        Destroy(bloodClone, 1f);
+        if (GetComponent<EnemyAI>() != null) GetComponent<EnemyAI>().JumpFromDamage();
         if (_health <= 0 && !_dead)
         {
-            _dead = true;
-            GetComponent<EnemyAI>().ChanceToSpawnItems();
-            LoseRandomLimb();
-            RagdollManager.SpawnRagdoll(gameObject);
+            if (GetComponentInChildren<Boss>() != null)
+            {
+                Destroy(gameObject);
+            }
+
+            else
+            {
+                _dead = true;
+                if (GetComponent<EnemyAI>() != null) GetComponent<EnemyAI>().ChanceToSpawnItems();
+                LoseRandomLimb();
+                RagdollManager.SpawnRagdoll(gameObject);
+            }
+            
         }
     }
     [ContextMenu("Lose random limb")]
     public void LoseRandomLimb()
     {
+        if (transform.GetComponent<EnemyAI>() == null) return;
         var limbToLose = losableLimbs[UnityEngine.Random.Range(0, losableLimbs.Count)];
         print(limbToLose.name);
         LoseLimb(limbToLose);
@@ -84,6 +100,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void LoseLimb(GameObject limb)
     {
+        if (transform.GetComponent<EnemyAI>() == null) return;
         print(limb.name);
         limb.GetComponent<SkinnedMeshRenderer>().rootBone = null;
         limb.GetComponent<SkinnedMeshRenderer>().bones = null;
@@ -96,6 +113,6 @@ public class EnemyHealth : MonoBehaviour
         {
             print(go.name);
         }
-        TakeDamage(_health);
+        TakeDamage(_health, transform.position);
     } 
 }

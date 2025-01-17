@@ -24,10 +24,11 @@ public class CollisionHandler : MonoBehaviour
             
             if (w.isEquipped)
             {
+                Vector3 hitPosition = other.transform.position;
                 print("Hit");
                 _damage = w.GetDamage(other);
                 bool ignoresArmor = w.IgnoresArmor();
-                transform.root.GetComponent<EnemyHealth>().TakeDamage(_damage);
+                transform.root.GetComponent<EnemyHealth>().TakeDamage(_damage, hitPosition);
                 // StartCoroutine(ChangeColor());
             }
         }

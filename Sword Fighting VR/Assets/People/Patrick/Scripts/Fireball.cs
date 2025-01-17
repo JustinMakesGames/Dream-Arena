@@ -23,7 +23,7 @@ public class Fireball : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Weapon w))
         {

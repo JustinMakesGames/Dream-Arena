@@ -16,11 +16,6 @@ public class Sword : Weapon
         ignoresArmor = weaponSo.ignoresArmor;
     }
 
-    protected override void Update()
-    {
-        _timeSinceLastDamage += Time.deltaTime;
-    }
-
     #endregion
 
     #region Damage Handler
