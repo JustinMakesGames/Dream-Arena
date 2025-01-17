@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -375,7 +375,7 @@ RectTransform:
   m_GameObject: {fileID: 4268694430798667192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 287.8}
-  m_LocalScale: {x: 0.17974, y: 0.17974, z: 0.17974}
+  m_LocalScale: {x: 0.08083568, y: 0.08083568, z: 0.08083568}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2315474731567968294}
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7797154284003816999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38547cf5beac81944b44987923cc08f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasDistance: 10
+  canvasDistance: 5
 --- !u!114 &2567569824215748308
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public struct EnemyCombination
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float canvasDistance;
 
     [SerializeField] private Transform spawnPlace;
+
+    [SerializeField] private float imageSpeed;
     private bool _hasStarted;
 
     private bool _isBossRoom;
@@ -93,9 +97,6 @@ public class GameManager : MonoBehaviour
 
     private void GenerateNextRoom(GameObject room)
     {
-        
-        
-
         GameObject newRoom = Instantiate(room, _finalSpawnPos, Quaternion.identity);
 
         _finalSpawnPos = _finalSpawnPos == spawnPos1.position ? spawnPos2.position : spawnPos1.position;
@@ -164,7 +165,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(enemy);
         }
-        Instantiate(loseCanvas);
+
+
+        GameObject loseCanvasClone = Instantiate(loseCanvas);
         
     }
 
@@ -172,6 +175,6 @@ public class GameManager : MonoBehaviour
     {
         OnTick.Instance.onTickEvent -= CheckIfEnemiesAlive;
 
-        Instantiate(winCanvas);
+        GameObject winCanvasClone = Instantiate(winCanvas);
     }
 }
