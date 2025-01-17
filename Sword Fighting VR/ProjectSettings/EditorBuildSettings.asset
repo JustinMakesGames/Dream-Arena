@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/People/Justin.unity
     guid: d04d731c0fcefad4a95067b52f981ff5
-  - enabled: 1
-    path: Assets/Scenes/People/Patrick.unity
-    guid: 8539a59a112d7c041b5a9dab726852f1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ad82ba3b593562e46a52492bea325ae7,
       type: 2}

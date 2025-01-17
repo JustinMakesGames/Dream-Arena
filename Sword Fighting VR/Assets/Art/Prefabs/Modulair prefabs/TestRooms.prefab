@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &7287037879946796473
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1937,7 +1937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &7324001537293423415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &6406599274791893995
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &4741525555340026974
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2549,7 +2549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &7576770415612451682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3300,7 +3300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &2961619536772246346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3449,7 +3449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &9085171398484683288
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3678,7 +3678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &2046352487260137345
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4855,7 +4855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &4805529786833365818
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5470,7 +5470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &2994915542279713324
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6227,7 +6227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &2040466940504171341
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7483,7 +7483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutCascades: 3
   explodeForce: 1
-  minVelocityToBreak: 1
+  minVelocityToBreak: 2
 --- !u!54 &540222003316020985
 Rigidbody:
   m_ObjectHideFlags: 0

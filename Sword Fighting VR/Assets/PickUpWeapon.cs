@@ -61,6 +61,7 @@ public class PickUpWeapon : XRGrabInteractable
     private IEnumerator WaitForDrop(LayerMask mask)
     {
         yield return new WaitForSeconds(0.5f);
+        print($"Ignored collisions between {mask} and {gameObject.layer}");
         Physics.IgnoreLayerCollision(mask, gameObject.layer, false);
 
     }
